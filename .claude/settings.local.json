@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:ieyasu.co)",
+      "WebFetch(domain:qiita.com)",
+      "WebFetch(domain:faq.ieyasu.co)",
+      "WebFetch(domain:cocolofun.co.jp)",
+      "Bash(gh auth:*)"
+    ]
+  }
+}
