@@ -1,0 +1,149 @@
+{
+  "table": "sumtime.weekly_input_fields",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "nextval('weekly_input_fields_id_seq'::regclass)"
+    },
+    {
+      "column_name": "user_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "target_week_date",
+      "data_type": "date",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "field1_contents",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "field2_contents",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "field3_contents",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 66,
+      "user_id": 10,
+      "target_week_date": "2025-04-14",
+      "field1_contents": "",
+      "field2_contents": "",
+      "field3_contents": "",
+      "created_user_id": 6,
+      "created_at": "2025-05-29T15:51:35",
+      "created_function_name": null,
+      "updated_user_id": 6,
+      "updated_at": "2025-05-29T15:51:35",
+      "updated_function_name": null
+    },
+    {
+      "id": 52,
+      "user_id": 9,
+      "target_week_date": "2025-05-26",
+      "field1_contents": "",
+      "field2_contents": "toroccaにログイン不可の件、先方に連絡済みで確認回答待ち",
+      "field3_contents": "",
+      "created_user_id": 9,
+      "created_at": "2025-05-23T14:41:01",
+      "created_function_name": null,
+      "updated_user_id": 9,
+      "updated_at": "2025-05-23T14:43:44",
+      "updated_function_name": null
+    },
+    {
+      "id": 2,
+      "user_id": 8,
+      "target_week_date": "2025-05-26",
+      "field1_contents": "",
+      "field2_contents": "",
+      "field3_contents": "",
+      "created_user_id": 8,
+      "created_at": "2025-05-20T23:28:45",
+      "created_function_name": null,
+      "updated_user_id": 8,
+      "updated_at": "2025-05-20T23:28:45",
+      "updated_function_name": null
+    },
+    {
+      "id": 3,
+      "user_id": 9,
+      "target_week_date": "2025-05-19",
+      "field1_contents": "",
+      "field2_contents": "",
+      "field3_contents": "",
+      "created_user_id": 9,
+      "created_at": "2025-05-21T08:52:58",
+      "created_function_name": null,
+      "updated_user_id": 9,
+      "updated_at": "2025-05-21T08:52:58",
+      "updated_function_name": null
+    },
+    {
+      "id": 4,
+      "user_id": 12,
+      "target_week_date": "2025-05-19",
+      "field1_contents": "",
+      "field2_contents": "",
+      "field3_contents": "",
+      "created_user_id": 12,
+      "created_at": "2025-05-21T08:53:12",
+      "created_function_name": null,
+      "updated_user_id": 12,
+      "updated_at": "2025-05-21T08:53:12",
+      "updated_function_name": null
+    }
+  ]
+}

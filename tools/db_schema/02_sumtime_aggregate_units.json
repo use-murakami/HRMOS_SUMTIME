@@ -1,0 +1,125 @@
+{
+  "table": "sumtime.aggregate_units",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "graph_category_id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "sort_order",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "is_using",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 4,
+      "name": "作業別",
+      "graph_category_id": 9,
+      "sort_order": 4,
+      "is_using": true,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "id": 1,
+      "name": "案件区分別",
+      "graph_category_id": 1,
+      "sort_order": 1,
+      "is_using": true,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "id": 2,
+      "name": "取引先別",
+      "graph_category_id": 1,
+      "sort_order": 2,
+      "is_using": true,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "id": 3,
+      "name": "案件別",
+      "graph_category_id": 2,
+      "sort_order": 3,
+      "is_using": true,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    }
+  ]
+}

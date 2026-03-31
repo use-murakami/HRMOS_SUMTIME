@@ -1,0 +1,72 @@
+{
+  "table": "sumtime.break_times",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "nextval('break_times_id_seq'::regclass)"
+    },
+    {
+      "column_name": "start_time",
+      "data_type": "time without time zone",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "end_time",
+      "data_type": "time without time zone",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 1,
+      "start_time": "12:00:00",
+      "end_time": "13:00:00",
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    }
+  ]
+}

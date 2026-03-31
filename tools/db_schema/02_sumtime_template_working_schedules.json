@@ -1,0 +1,171 @@
+{
+  "table": "sumtime.template_working_schedules",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "nextval('template_working_schedules_id_seq'::regclass)"
+    },
+    {
+      "column_name": "template_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "template_working_category_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "template_working_subcategory_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "schedule_time",
+      "data_type": "numeric",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "description",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "sort_order",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 10,
+      "template_id": 2,
+      "template_working_category_id": null,
+      "template_working_subcategory_id": null,
+      "name": "不具合対応",
+      "schedule_time": 0.0,
+      "description": "不具合に関する対応時間（USEに瑕疵あり）",
+      "sort_order": 1,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "id": 12,
+      "template_id": 2,
+      "template_working_category_id": null,
+      "template_working_subcategory_id": null,
+      "name": "運用支援",
+      "schedule_time": 0.0,
+      "description": "運用に関する、確認、調査、集計、報告等の時間",
+      "sort_order": 3,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "id": 11,
+      "template_id": 2,
+      "template_working_category_id": null,
+      "template_working_subcategory_id": null,
+      "name": "障害対応",
+      "schedule_time": 0.0,
+      "description": "障害発生時の対応時間（USEに瑕疵なし）",
+      "sort_order": 2,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "id": 13,
+      "template_id": 2,
+      "template_working_category_id": null,
+      "template_working_subcategory_id": null,
+      "name": "環境整備",
+      "schedule_time": 0.0,
+      "description": "環境調査や設定、機材選定や設置などの対応時間\r\n",
+      "sort_order": 4,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "id": 14,
+      "template_id": 2,
+      "template_working_category_id": null,
+      "template_working_subcategory_id": null,
+      "name": "要望対応",
+      "schedule_time": 0.0,
+      "description": "改善要望や機能追加に関する対応時間\r\n",
+      "sort_order": 5,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    }
+  ]
+}

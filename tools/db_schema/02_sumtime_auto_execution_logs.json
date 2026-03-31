@@ -1,0 +1,171 @@
+{
+  "table": "sumtime.auto_execution_logs",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "nextval('auto_execution_logs_id_seq'::regclass)"
+    },
+    {
+      "column_name": "output_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "process_category_id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "log_category_id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "filename",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "log_detail",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "supported_state_id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "supported_memo",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 3,
+      "output_at": "2025-01-24T00:39:00",
+      "process_category_id": 2,
+      "log_category_id": 1,
+      "filename": "",
+      "log_detail": "[2025/01/24 00:39:00] DB バックアップの処理を開始します。\n[2025/01/24 00:39:00] DB バックアップの初期化処理を行います。\n[2025/01/24 00:39:00] 例外エラーが発生した為、DB バックアップの処理を終了します。",
+      "supported_state_id": 1,
+      "supported_memo": "",
+      "created_user_id": 0,
+      "created_at": "2025-01-24T00:39:00",
+      "created_function_name": null,
+      "updated_user_id": 0,
+      "updated_at": "2025-01-24T00:39:00",
+      "updated_function_name": null
+    },
+    {
+      "id": 5,
+      "output_at": "2025-01-24T00:41:49",
+      "process_category_id": 2,
+      "log_category_id": 1,
+      "filename": "",
+      "log_detail": "[2025/01/24 00:41:49] DB バックアップの処理を開始します。\n[2025/01/24 00:41:49] DB バックアップの初期化処理を行います。\n[2025/01/24 00:41:49] 出力先:/var/www/html/sumtime/src/storage/app/dbdump\n[2025/01/24 00:41:49] ダンプファイル名:sumtime_fri.dmp\n[2025/01/24 00:41:49] 例外エラーが発生した為、DB バックアップの処理を終了します。",
+      "supported_state_id": 1,
+      "supported_memo": "",
+      "created_user_id": 0,
+      "created_at": "2025-01-24T00:41:49",
+      "created_function_name": null,
+      "updated_user_id": 0,
+      "updated_at": "2025-01-24T00:41:49",
+      "updated_function_name": null
+    },
+    {
+      "id": 7,
+      "output_at": "2025-01-24T00:42:57",
+      "process_category_id": 2,
+      "log_category_id": 1,
+      "filename": "",
+      "log_detail": "[2025/01/24 00:42:57] DB バックアップの処理を開始します。\n[2025/01/24 00:42:57] DB バックアップの初期化処理を行います。\n[2025/01/24 00:42:57] 出力先:/var/www/html/sumtime/src/storage/app/dbdump\n[2025/01/24 00:42:57] ダンプファイル名:sumtime_fri.dmp\n[2025/01/24 00:42:57] 例外エラーが発生した為、DB バックアップの処理を終了します。",
+      "supported_state_id": 1,
+      "supported_memo": "",
+      "created_user_id": 0,
+      "created_at": "2025-01-24T00:42:57",
+      "created_function_name": null,
+      "updated_user_id": 0,
+      "updated_at": "2025-01-24T00:42:57",
+      "updated_function_name": null
+    },
+    {
+      "id": 9,
+      "output_at": "2025-01-24T00:43:35",
+      "process_category_id": 2,
+      "log_category_id": 1,
+      "filename": "",
+      "log_detail": "[2025/01/24 00:43:35] DB バックアップの処理を開始します。\n[2025/01/24 00:43:35] DB バックアップの初期化処理を行います。\n[2025/01/24 00:43:35] 出力先:/var/www/html/sumtime/src/storage/app/dbdump\n[2025/01/24 00:43:35] ダンプファイル名:sumtime_fri.dmp\n[2025/01/24 00:43:35] 例外エラーが発生した為、DB バックアップの処理を終了します。",
+      "supported_state_id": 1,
+      "supported_memo": "",
+      "created_user_id": 0,
+      "created_at": "2025-01-24T00:43:35",
+      "created_function_name": null,
+      "updated_user_id": 0,
+      "updated_at": "2025-01-24T00:43:35",
+      "updated_function_name": null
+    },
+    {
+      "id": 11,
+      "output_at": "2025-01-24T00:54:52",
+      "process_category_id": 2,
+      "log_category_id": 1,
+      "filename": "",
+      "log_detail": "[2025/01/24 00:54:52] DB バックアップの処理を開始します。\n[2025/01/24 00:54:52] DB バックアップの初期化処理を行います。\n[2025/01/24 00:54:52] 出力先:/var/www/html/sumtime/src/storage/app/dbdump\n[2025/01/24 00:54:52] ダンプファイル名:sumtime_fri.dmp\n[2025/01/24 00:54:52] 例外エラーが発生した為、DB バックアップの処理を終了します。",
+      "supported_state_id": 1,
+      "supported_memo": "",
+      "created_user_id": 0,
+      "created_at": "2025-01-24T00:54:52",
+      "created_function_name": null,
+      "updated_user_id": 0,
+      "updated_at": "2025-01-24T00:54:52",
+      "updated_function_name": null
+    }
+  ]
+}

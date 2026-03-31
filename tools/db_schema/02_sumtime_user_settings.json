@@ -1,0 +1,182 @@
+{
+  "table": "sumtime.user_settings",
+  "columns": [
+    {
+      "column_name": "user_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "related_project_is_visible",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "column_name": "favorite_work_is_visible",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "false"
+    },
+    {
+      "column_name": "project_display_order_id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "1"
+    },
+    {
+      "column_name": "aggregate_unit_id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "4"
+    },
+    {
+      "column_name": "aggregate_period_id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "1"
+    },
+    {
+      "column_name": "saturday_is_visible",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "false"
+    },
+    {
+      "column_name": "sunday_is_visible",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "false"
+    },
+    {
+      "column_name": "start_weekday_id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "2"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "user_id": 10,
+      "related_project_is_visible": true,
+      "favorite_work_is_visible": false,
+      "project_display_order_id": 1,
+      "aggregate_unit_id": 4,
+      "aggregate_period_id": 1,
+      "saturday_is_visible": false,
+      "sunday_is_visible": false,
+      "start_weekday_id": 2,
+      "created_user_id": 6,
+      "created_at": "2025-04-02T13:08:26",
+      "created_function_name": null,
+      "updated_user_id": 10,
+      "updated_at": "2025-06-11T16:53:32",
+      "updated_function_name": null
+    },
+    {
+      "user_id": 16,
+      "related_project_is_visible": true,
+      "favorite_work_is_visible": false,
+      "project_display_order_id": 1,
+      "aggregate_unit_id": 4,
+      "aggregate_period_id": 1,
+      "saturday_is_visible": false,
+      "sunday_is_visible": false,
+      "start_weekday_id": 2,
+      "created_user_id": 6,
+      "created_at": "2025-04-02T13:08:19",
+      "created_function_name": null,
+      "updated_user_id": 6,
+      "updated_at": "2025-04-02T13:08:19",
+      "updated_function_name": null
+    },
+    {
+      "user_id": 5,
+      "related_project_is_visible": true,
+      "favorite_work_is_visible": false,
+      "project_display_order_id": 1,
+      "aggregate_unit_id": 1,
+      "aggregate_period_id": 2,
+      "saturday_is_visible": false,
+      "sunday_is_visible": false,
+      "start_weekday_id": 2,
+      "created_user_id": 6,
+      "created_at": "2025-04-02T13:08:18",
+      "created_function_name": null,
+      "updated_user_id": 5,
+      "updated_at": "2025-12-17T14:00:15",
+      "updated_function_name": null
+    },
+    {
+      "user_id": 14,
+      "related_project_is_visible": true,
+      "favorite_work_is_visible": false,
+      "project_display_order_id": 2,
+      "aggregate_unit_id": 4,
+      "aggregate_period_id": 1,
+      "saturday_is_visible": false,
+      "sunday_is_visible": false,
+      "start_weekday_id": 2,
+      "created_user_id": 8,
+      "created_at": "2025-04-04T10:23:21",
+      "created_function_name": null,
+      "updated_user_id": 14,
+      "updated_at": "2026-01-26T18:36:42",
+      "updated_function_name": null
+    },
+    {
+      "user_id": 9,
+      "related_project_is_visible": true,
+      "favorite_work_is_visible": false,
+      "project_display_order_id": 5,
+      "aggregate_unit_id": 2,
+      "aggregate_period_id": 1,
+      "saturday_is_visible": false,
+      "sunday_is_visible": false,
+      "start_weekday_id": 2,
+      "created_user_id": 8,
+      "created_at": "2025-04-04T10:23:09",
+      "created_function_name": null,
+      "updated_user_id": 9,
+      "updated_at": "2026-02-10T18:04:57",
+      "updated_function_name": null
+    }
+  ]
+}

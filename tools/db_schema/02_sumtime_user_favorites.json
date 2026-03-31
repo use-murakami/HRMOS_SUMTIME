@@ -1,0 +1,105 @@
+{
+  "table": "sumtime.user_favorites",
+  "columns": [
+    {
+      "column_name": "user_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "working_schedule_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "user_id": 12,
+      "working_schedule_id": 8,
+      "created_user_id": 12,
+      "created_at": "2025-07-14T18:11:50",
+      "created_function_name": null,
+      "updated_user_id": 12,
+      "updated_at": "2025-07-14T18:11:50",
+      "updated_function_name": null
+    },
+    {
+      "user_id": 7,
+      "working_schedule_id": 63,
+      "created_user_id": 7,
+      "created_at": "2025-07-31T09:06:31",
+      "created_function_name": null,
+      "updated_user_id": 7,
+      "updated_at": "2025-07-31T09:06:31",
+      "updated_function_name": null
+    },
+    {
+      "user_id": 12,
+      "working_schedule_id": 117,
+      "created_user_id": 12,
+      "created_at": "2025-07-31T17:43:15",
+      "created_function_name": null,
+      "updated_user_id": 12,
+      "updated_at": "2025-07-31T17:43:15",
+      "updated_function_name": null
+    },
+    {
+      "user_id": 14,
+      "working_schedule_id": 44,
+      "created_user_id": 14,
+      "created_at": "2025-08-01T18:36:57",
+      "created_function_name": null,
+      "updated_user_id": 14,
+      "updated_at": "2025-08-01T18:36:57",
+      "updated_function_name": null
+    },
+    {
+      "user_id": 11,
+      "working_schedule_id": 117,
+      "created_user_id": 11,
+      "created_at": "2025-08-18T19:00:15",
+      "created_function_name": null,
+      "updated_user_id": 11,
+      "updated_at": "2025-08-18T19:00:15",
+      "updated_function_name": null
+    }
+  ]
+}

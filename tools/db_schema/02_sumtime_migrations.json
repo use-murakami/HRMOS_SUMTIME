@@ -1,0 +1,50 @@
+{
+  "table": "sumtime.migrations",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "nextval('migrations_id_seq'::regclass)"
+    },
+    {
+      "column_name": "migration",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "batch",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 1,
+      "migration": "2014_10_12_000000_create_users_table",
+      "batch": 1
+    },
+    {
+      "id": 2,
+      "migration": "2014_10_12_100000_create_password_resets_table",
+      "batch": 1
+    },
+    {
+      "id": 3,
+      "migration": "2018_01_01_000000_create_action_events_table",
+      "batch": 1
+    },
+    {
+      "id": 4,
+      "migration": "2019_05_10_000000_add_fields_to_action_events_table",
+      "batch": 1
+    },
+    {
+      "id": 5,
+      "migration": "2019_08_19_000000_create_failed_jobs_table",
+      "batch": 1
+    }
+  ]
+}

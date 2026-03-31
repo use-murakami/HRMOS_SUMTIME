@@ -1,0 +1,171 @@
+{
+  "table": "sumtime.working_schedules",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "nextval('working_schedules_id_seq'::regclass)"
+    },
+    {
+      "column_name": "project_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "working_category_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "working_subcategory_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "schedule_time",
+      "data_type": "numeric",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "description",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "sort_order",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 1,
+      "project_id": 1,
+      "working_category_id": null,
+      "working_subcategory_id": null,
+      "name": "庶務作業",
+      "schedule_time": 0.0,
+      "description": "電話対応、予実入力、社内申請などの事務作業",
+      "sort_order": 1,
+      "created_user_id": 6,
+      "created_at": "2025-04-02T09:13:48",
+      "created_function_name": "projects",
+      "updated_user_id": 6,
+      "updated_at": "2025-04-02T09:13:48",
+      "updated_function_name": "projects"
+    },
+    {
+      "id": 2,
+      "project_id": 2,
+      "working_category_id": null,
+      "working_subcategory_id": null,
+      "name": "クラウド整備",
+      "schedule_time": 0.0,
+      "description": "社内で使用するクラウドやマスタの整備作業",
+      "sort_order": 1,
+      "created_user_id": 6,
+      "created_at": "2025-04-02T10:45:05",
+      "created_function_name": "projects",
+      "updated_user_id": 6,
+      "updated_at": "2025-04-02T10:45:05",
+      "updated_function_name": "projects"
+    },
+    {
+      "id": 3,
+      "project_id": 2,
+      "working_category_id": null,
+      "working_subcategory_id": null,
+      "name": "機器整備",
+      "schedule_time": 0.0,
+      "description": "社内で使用する機器の整備作業",
+      "sort_order": 2,
+      "created_user_id": 6,
+      "created_at": "2025-04-02T10:45:05",
+      "created_function_name": "projects",
+      "updated_user_id": 6,
+      "updated_at": "2025-04-02T10:45:05",
+      "updated_function_name": "projects"
+    },
+    {
+      "id": 4,
+      "project_id": 2,
+      "working_category_id": null,
+      "working_subcategory_id": null,
+      "name": "資料整備",
+      "schedule_time": 0.0,
+      "description": "社内で使用する雛形やマニュアル等の整備作業",
+      "sort_order": 3,
+      "created_user_id": 6,
+      "created_at": "2025-04-02T10:45:05",
+      "created_function_name": "projects",
+      "updated_user_id": 6,
+      "updated_at": "2025-04-02T10:45:05",
+      "updated_function_name": "projects"
+    },
+    {
+      "id": 5,
+      "project_id": 2,
+      "working_category_id": null,
+      "working_subcategory_id": null,
+      "name": "職場整備",
+      "schedule_time": 0.0,
+      "description": "職場の整理・整頓・清掃・買い出し等作業",
+      "sort_order": 4,
+      "created_user_id": 6,
+      "created_at": "2025-04-02T10:45:05",
+      "created_function_name": "projects",
+      "updated_user_id": 6,
+      "updated_at": "2025-04-02T10:45:05",
+      "updated_function_name": "projects"
+    }
+  ]
+}

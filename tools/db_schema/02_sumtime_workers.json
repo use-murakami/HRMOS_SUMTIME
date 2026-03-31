@@ -1,0 +1,105 @@
+{
+  "table": "sumtime.workers",
+  "columns": [
+    {
+      "column_name": "project_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "working_user_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "project_id": 3,
+      "working_user_id": 6,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "project_id": 4,
+      "working_user_id": 6,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "project_id": 5,
+      "working_user_id": 6,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "project_id": 6,
+      "working_user_id": 8,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "project_id": 7,
+      "working_user_id": 7,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": null,
+      "updated_at": null,
+      "updated_function_name": null
+    }
+  ]
+}

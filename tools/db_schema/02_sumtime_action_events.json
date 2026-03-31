@@ -1,0 +1,204 @@
+{
+  "table": "sumtime.action_events",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "nextval('action_events_id_seq'::regclass)"
+    },
+    {
+      "column_name": "batch_id",
+      "data_type": "character",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "user_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "actionable_type",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "actionable_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "target_type",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "target_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "model_type",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "model_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "fields",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "status",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "column_default": "'running'::character varying"
+    },
+    {
+      "column_name": "exception",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "original",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "changes",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 1,
+      "batch_id": "9d23558c-3d14-4f66-b55f-98422cb3fb3f",
+      "user_id": 4,
+      "name": "Update",
+      "actionable_type": "Useeng\\Origami\\Models\\Menu",
+      "actionable_id": 12,
+      "target_type": "Useeng\\Origami\\Models\\Menu",
+      "target_id": 12,
+      "model_type": "Useeng\\Origami\\Models\\Menu",
+      "model_id": 12,
+      "fields": "",
+      "status": "finished",
+      "exception": "",
+      "created_at": "2024-10-01T11:47:26",
+      "updated_at": "2024-10-01T11:47:26",
+      "original": "{\"menu_is_show\":true,\"is_using\":true}",
+      "changes": "{\"menu_is_show\":\"true\",\"is_using\":\"true\"}"
+    },
+    {
+      "id": 2,
+      "batch_id": "9d235653-c468-4e70-8e1a-9f70a4d8f264",
+      "user_id": 4,
+      "name": "Create",
+      "actionable_type": "App\\Models\\Customer",
+      "actionable_id": 1,
+      "target_type": "App\\Models\\Customer",
+      "target_id": 1,
+      "model_type": "App\\Models\\Customer",
+      "model_id": 1,
+      "fields": "",
+      "status": "finished",
+      "exception": "",
+      "created_at": "2024-10-01T11:49:37",
+      "updated_at": "2024-10-01T11:49:37",
+      "original": null,
+      "changes": "{\"name\":\"\\u30c7\\u30e2\\u7528\\u30d7\\u30ed\\u30b8\\u30a7\\u30af\\u30c8\",\"is_using\":\"true\",\"sort_order\":1,\"created_user_id\":4,\"created_function_name\":\"customers\",\"updated_user_id\":4,\"updated_function_name\":\"customers\",\"updated_at\":\"2024\\/10\\/01 02:49:37\",\"created_at\":\"2024\\/10\\/01 02:49:37\",\"id\":1}"
+    },
+    {
+      "id": 3,
+      "batch_id": "9d236d99-86ef-4204-822c-2d23d3230c43",
+      "user_id": 4,
+      "name": "Create",
+      "actionable_type": "App\\Models\\Project",
+      "actionable_id": 1,
+      "target_type": "App\\Models\\Project",
+      "target_id": 1,
+      "model_type": "App\\Models\\Project",
+      "model_id": 1,
+      "fields": "",
+      "status": "finished",
+      "exception": "",
+      "created_at": "2024-10-01T12:54:41",
+      "updated_at": "2024-10-01T12:54:41",
+      "original": null,
+      "changes": "{\"customer_id\":\"1\",\"name\":\"\\u5de5\\u6570\\u7ba1\\u7406\\u30b5\\u30fc\\u30d3\\u30b9\",\"project_code\":\"\",\"status_category_id\":\"1\",\"start_at\":\"2024\\/10\\/01 00:00:00\",\"end_at\":null,\"managing_user_id\":\"4\",\"is_all_members_project\":false,\"project_category_id\":\"1\",\"working_aggregate_period_id\":\"1\",\"description\":\"\",\"created_user_id\":4,\"created_function_name\":\"projects\",\"updated_user_id\":4,\"updated_function_name\":\"projects\",\"updated_at\":\"2024-10-01T03:54:41.000000Z\",\"created_at\":\"2024-10-01T03:54:41.000000Z\",\"id\":1}"
+    },
+    {
+      "id": 4,
+      "batch_id": "9d307943-975d-4457-890b-5dc354db0808",
+      "user_id": 4,
+      "name": "Update",
+      "actionable_type": "Useeng\\Origami\\Models\\Menu",
+      "actionable_id": 13,
+      "target_type": "Useeng\\Origami\\Models\\Menu",
+      "target_id": 13,
+      "model_type": "Useeng\\Origami\\Models\\Menu",
+      "model_id": 13,
+      "fields": "",
+      "status": "finished",
+      "exception": "",
+      "created_at": "2024-10-08T00:33:04",
+      "updated_at": "2024-10-08T00:33:04",
+      "original": "{\"menu_is_show\":true,\"is_using\":true}",
+      "changes": "{\"menu_is_show\":\"true\",\"is_using\":\"true\"}"
+    },
+    {
+      "id": 5,
+      "batch_id": "9d30794e-f7fa-4406-b754-556bc6b11e56",
+      "user_id": 4,
+      "name": "Update",
+      "actionable_type": "Useeng\\Origami\\Models\\Menu",
+      "actionable_id": 14,
+      "target_type": "Useeng\\Origami\\Models\\Menu",
+      "target_id": 14,
+      "model_type": "Useeng\\Origami\\Models\\Menu",
+      "model_id": 14,
+      "fields": "",
+      "status": "finished",
+      "exception": "",
+      "created_at": "2024-10-08T00:33:12",
+      "updated_at": "2024-10-08T00:33:12",
+      "original": "{\"menu_is_show\":true,\"is_using\":true}",
+      "changes": "{\"menu_is_show\":\"true\",\"is_using\":\"true\"}"
+    }
+  ]
+}

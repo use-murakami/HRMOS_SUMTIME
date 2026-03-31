@@ -1,0 +1,204 @@
+{
+  "table": "sumtime.users",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "nextval('users_id_seq'::regclass)"
+    },
+    {
+      "column_name": "name",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "email",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "email_verified_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "password",
+      "data_type": "character varying",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "remember_token",
+      "data_type": "character varying",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "kana",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "account",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "authority_category_id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "is_using",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "column_name": "sort_order",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 7,
+      "name": "黒柳裕馬",
+      "email": "y-kuroyanagi@use-eng.co.jp",
+      "email_verified_at": null,
+      "password": "$2y$10$zNOnG6gKyu4RH1CYmpz/HuVL4AVA4qZTB1KXF0MXZCggmgJIyioLm",
+      "remember_token": "AfQtV2EPcnIOSKvyj7UyiBdh9YDUB8rEWT4UzeGEcUkQ4EvQsCdeWwnZ7aXM",
+      "kana": "",
+      "account": "y-kuroyanagi",
+      "authority_category_id": 10,
+      "is_using": true,
+      "sort_order": 0,
+      "created_user_id": 0,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 7,
+      "updated_at": "2025-04-07T13:30:30",
+      "updated_function_name": null
+    },
+    {
+      "id": 11,
+      "name": "山口敬史",
+      "email": "h-yamaguchi@use-eng.co.jp",
+      "email_verified_at": null,
+      "password": "$2y$10$Kxe7vtmwN4gE7pnUJacyO.1MOxEB8Z..ZeA.1zTziPMTCBYXosgnK",
+      "remember_token": "DS72kzHg20crlqAdz1tDo4tV1pk6kGIy23KVVF3H0Uri89zVyRhZSdEnnpQN",
+      "kana": "",
+      "account": "h-yamaguchi",
+      "authority_category_id": 10,
+      "is_using": true,
+      "sort_order": 0,
+      "created_user_id": 0,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 11,
+      "updated_at": "2024-10-09T09:21:11",
+      "updated_function_name": null
+    },
+    {
+      "id": 14,
+      "name": "田中一輝",
+      "email": "k-tanaka@use-eng.co.jp",
+      "email_verified_at": null,
+      "password": "$2y$10$F29cjv/lA64lC1o54c65Ku4OvTCj7y7pXSwMxDIVZm.ovi7oBY1jm",
+      "remember_token": "uh6nircC0LegpeQvBCio13A1fxR1Sec1xtB0RoZei4RvRAC1B206eQtZ9dav",
+      "kana": "",
+      "account": "k-tanaka",
+      "authority_category_id": 10,
+      "is_using": true,
+      "sort_order": 0,
+      "created_user_id": 0,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 6,
+      "updated_at": "2025-04-07T13:30:48",
+      "updated_function_name": "users"
+    },
+    {
+      "id": 9,
+      "name": "藤田拓弥",
+      "email": "t-fujita@use-eng.co.jp",
+      "email_verified_at": null,
+      "password": "$2y$10$SiXpyxMNAI/yYKSKM68mKuL1u5Ba0pdBeZ6XOIRHZW3VmGsBwNw0.",
+      "remember_token": "L15O2SDJSx3DtqKvjChaWSg40JwbD770cqG4gpiRhEVj83XN0yEx6wRTBIum",
+      "kana": "",
+      "account": "t-fujita",
+      "authority_category_id": 10,
+      "is_using": true,
+      "sort_order": 0,
+      "created_user_id": 0,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 9,
+      "updated_at": "2025-04-07T13:30:35",
+      "updated_function_name": null
+    },
+    {
+      "id": 17,
+      "name": "竹田恭太",
+      "email": "k-takeda@use-eng.co.jp",
+      "email_verified_at": null,
+      "password": "$2y$10$tqxRcXrG0oZBN6B.pudHwezrcARUqo6mlbE6Trd9kRGoqjDQK57uS",
+      "remember_token": "QPbM6ZJMk68x84oxYRq0IyEw1ZqUUUumNlFTpETncl5i2l6vw1z8WQgSKZID",
+      "kana": "",
+      "account": "k-takeda",
+      "authority_category_id": 10,
+      "is_using": true,
+      "sort_order": 0,
+      "created_user_id": 0,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 17,
+      "updated_at": "2025-04-07T13:31:03",
+      "updated_function_name": null
+    }
+  ]
+}

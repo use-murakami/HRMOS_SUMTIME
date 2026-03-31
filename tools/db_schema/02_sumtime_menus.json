@@ -1,0 +1,171 @@
+{
+  "table": "sumtime.menus",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "parent_menu_id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "resource_name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "icon_name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "menu_is_show",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "column_name": "is_using",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "column_name": "sort_order",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 4,
+      "parent_menu_id": 0,
+      "name": "メンテナンス",
+      "resource_name": "/sumtime/maintenance",
+      "icon_name": "adjustments",
+      "menu_is_show": true,
+      "is_using": true,
+      "sort_order": 4,
+      "created_user_id": 0,
+      "created_at": "2024-10-01T11:46:18.912373",
+      "created_function_name": "init",
+      "updated_user_id": 0,
+      "updated_at": "2024-10-01T11:46:18.912373",
+      "updated_function_name": "init"
+    },
+    {
+      "id": 11,
+      "parent_menu_id": 0,
+      "name": "予定管理",
+      "resource_name": "/sumtime/app",
+      "icon_name": "calendar",
+      "menu_is_show": true,
+      "is_using": true,
+      "sort_order": 3,
+      "created_user_id": 1,
+      "created_at": "2023-11-07T15:36:35",
+      "created_function_name": "menus",
+      "updated_user_id": 1,
+      "updated_at": "2023-11-07T17:08:54",
+      "updated_function_name": "menus"
+    },
+    {
+      "id": 16,
+      "parent_menu_id": 11,
+      "name": "作業照会",
+      "resource_name": "ManhoursList",
+      "icon_name": "",
+      "menu_is_show": true,
+      "is_using": true,
+      "sort_order": 2,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 12,
+      "updated_at": "2025-03-25T09:23:06",
+      "updated_function_name": "menus"
+    },
+    {
+      "id": 1,
+      "parent_menu_id": 0,
+      "name": "ダッシュボード",
+      "resource_name": "HomeDashboard",
+      "icon_name": "home",
+      "menu_is_show": false,
+      "is_using": true,
+      "sort_order": 1,
+      "created_user_id": 0,
+      "created_at": "2024-10-01T11:46:18.912373",
+      "created_function_name": "init",
+      "updated_user_id": 0,
+      "updated_at": "2024-10-01T11:46:18.912373",
+      "updated_function_name": "init"
+    },
+    {
+      "id": 2,
+      "parent_menu_id": 0,
+      "name": "プロジェクト管理",
+      "resource_name": "/sumtime/app",
+      "icon_name": "clipboard",
+      "menu_is_show": true,
+      "is_using": true,
+      "sort_order": 2,
+      "created_user_id": 0,
+      "created_at": "2024-10-01T11:46:18.912373",
+      "created_function_name": "init",
+      "updated_user_id": 8,
+      "updated_at": "2025-04-05T23:40:27",
+      "updated_function_name": "menus"
+    }
+  ]
+}

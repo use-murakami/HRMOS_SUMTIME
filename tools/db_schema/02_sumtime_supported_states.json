@@ -1,0 +1,115 @@
+{
+  "table": "sumtime.supported_states",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "sort_order",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "is_using",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 1,
+      "name": "対象外",
+      "sort_order": 0,
+      "is_using": true,
+      "created_user_id": 0,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 0,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "id": 2,
+      "name": "未対応",
+      "sort_order": 0,
+      "is_using": true,
+      "created_user_id": 0,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 0,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "id": 3,
+      "name": "対応中",
+      "sort_order": 0,
+      "is_using": true,
+      "created_user_id": 0,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 0,
+      "updated_at": null,
+      "updated_function_name": null
+    },
+    {
+      "id": 4,
+      "name": "対応済",
+      "sort_order": 0,
+      "is_using": true,
+      "created_user_id": 0,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 0,
+      "updated_at": null,
+      "updated_function_name": null
+    }
+  ]
+}

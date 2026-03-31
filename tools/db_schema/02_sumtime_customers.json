@@ -1,0 +1,138 @@
+{
+  "table": "sumtime.customers",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "nextval('customers_id_seq'::regclass)"
+    },
+    {
+      "column_name": "name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "short_name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "sort_order",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "is_using",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 4,
+      "name": "名古屋",
+      "short_name": "名古屋",
+      "sort_order": 19,
+      "is_using": true,
+      "created_user_id": 6,
+      "created_at": "2025-01-15T09:14:14",
+      "created_function_name": "customers",
+      "updated_user_id": 6,
+      "updated_at": "2025-03-19T17:09:23",
+      "updated_function_name": "customers"
+    },
+    {
+      "id": 2,
+      "name": "社内",
+      "short_name": "社内",
+      "sort_order": 20,
+      "is_using": true,
+      "created_user_id": 4,
+      "created_at": "2025-01-08T18:32:47",
+      "created_function_name": "customers",
+      "updated_user_id": 6,
+      "updated_at": "2025-03-19T17:09:23",
+      "updated_function_name": "customers"
+    },
+    {
+      "id": 17,
+      "name": "中京大",
+      "short_name": "中京大",
+      "sort_order": 15,
+      "is_using": true,
+      "created_user_id": 6,
+      "created_at": "2025-01-21T14:20:24",
+      "created_function_name": "customers",
+      "updated_user_id": 6,
+      "updated_at": "2025-03-19T17:09:26",
+      "updated_function_name": "customers"
+    },
+    {
+      "id": 18,
+      "name": "日通電",
+      "short_name": "日通電",
+      "sort_order": 16,
+      "is_using": true,
+      "created_user_id": 6,
+      "created_at": "2025-01-21T14:20:28",
+      "created_function_name": "customers",
+      "updated_user_id": 6,
+      "updated_at": "2025-03-19T17:09:26",
+      "updated_function_name": "customers"
+    },
+    {
+      "id": 15,
+      "name": "小牧",
+      "short_name": "小牧",
+      "sort_order": 17,
+      "is_using": true,
+      "created_user_id": 6,
+      "created_at": "2025-01-21T14:20:15",
+      "created_function_name": "customers",
+      "updated_user_id": 6,
+      "updated_at": "2025-03-19T17:09:26",
+      "updated_function_name": "customers"
+    }
+  ]
+}

@@ -1,0 +1,5403 @@
+{
+  "tables": [
+    "sumtime.action_events",
+    "sumtime.aggregate_categories",
+    "sumtime.aggregate_closing_dates",
+    "sumtime.aggregate_periods",
+    "sumtime.aggregate_units",
+    "sumtime.alert_notifications",
+    "sumtime.authority_categories",
+    "sumtime.authority_category_menu",
+    "sumtime.auto_execution_logs",
+    "sumtime.break_time_schedules",
+    "sumtime.break_times",
+    "sumtime.customers",
+    "sumtime.failed_jobs",
+    "sumtime.field_heights",
+    "sumtime.form_fields",
+    "sumtime.function_visible_setiings",
+    "sumtime.graph_categories",
+    "sumtime.io_settings",
+    "sumtime.jobs",
+    "sumtime.log_categories",
+    "sumtime.menus",
+    "sumtime.migrations",
+    "sumtime.nova_field_attachments",
+    "sumtime.nova_notifications",
+    "sumtime.nova_pending_field_attachments",
+    "sumtime.panels",
+    "sumtime.password_resets",
+    "sumtime.personal_access_tokens",
+    "sumtime.process_categories",
+    "sumtime.project_categories",
+    "sumtime.project_display_orders",
+    "sumtime.projects",
+    "sumtime.schedule_time_input_units",
+    "sumtime.start_weekdays",
+    "sumtime.supported_states",
+    "sumtime.template_working_categories",
+    "sumtime.template_working_schedules",
+    "sumtime.templates",
+    "sumtime.user_favorites",
+    "sumtime.user_open_projects",
+    "sumtime.user_open_working_categories",
+    "sumtime.user_settings",
+    "sumtime.users",
+    "sumtime.weekly_input_fields",
+    "sumtime.workers",
+    "sumtime.working_achievements",
+    "sumtime.working_categories",
+    "sumtime.working_schedules"
+  ],
+  "row_counts": {
+    "sumtime.action_events": 207,
+    "sumtime.aggregate_categories": 8,
+    "sumtime.aggregate_closing_dates": 6,
+    "sumtime.aggregate_periods": 3,
+    "sumtime.aggregate_units": 4,
+    "sumtime.alert_notifications": 0,
+    "sumtime.authority_categories": 4,
+    "sumtime.authority_category_menu": 48,
+    "sumtime.auto_execution_logs": 411,
+    "sumtime.break_time_schedules": 3402,
+    "sumtime.break_times": 1,
+    "sumtime.customers": 18,
+    "sumtime.failed_jobs": 0,
+    "sumtime.field_heights": 3,
+    "sumtime.form_fields": 0,
+    "sumtime.function_visible_setiings": 1,
+    "sumtime.graph_categories": 3,
+    "sumtime.io_settings": 1,
+    "sumtime.jobs": 0,
+    "sumtime.log_categories": 3,
+    "sumtime.menus": 15,
+    "sumtime.migrations": 10,
+    "sumtime.nova_field_attachments": 0,
+    "sumtime.nova_notifications": 0,
+    "sumtime.nova_pending_field_attachments": 0,
+    "sumtime.panels": 1,
+    "sumtime.password_resets": 0,
+    "sumtime.personal_access_tokens": 0,
+    "sumtime.process_categories": 2,
+    "sumtime.project_categories": 4,
+    "sumtime.project_display_orders": 6,
+    "sumtime.projects": 42,
+    "sumtime.schedule_time_input_units": 3,
+    "sumtime.start_weekdays": 2,
+    "sumtime.supported_states": 4,
+    "sumtime.template_working_categories": 3,
+    "sumtime.template_working_schedules": 16,
+    "sumtime.templates": 3,
+    "sumtime.user_favorites": 17,
+    "sumtime.user_open_projects": 119,
+    "sumtime.user_open_working_categories": 0,
+    "sumtime.user_settings": 14,
+    "sumtime.users": 14,
+    "sumtime.weekly_input_fields": 636,
+    "sumtime.workers": 101,
+    "sumtime.working_achievements": 9529,
+    "sumtime.working_categories": 0,
+    "sumtime.working_schedules": 221
+  },
+  "table_details": {
+    "sumtime.action_events": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('action_events_id_seq'::regclass)"
+        },
+        {
+          "column_name": "batch_id",
+          "data_type": "character",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "user_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "name",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "actionable_type",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "actionable_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "target_type",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "target_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "model_type",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "model_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "fields",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "status",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": "'running'::character varying"
+        },
+        {
+          "column_name": "exception",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "original",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "changes",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "batch_id": "9d23558c-3d14-4f66-b55f-98422cb3fb3f",
+          "user_id": 4,
+          "name": "Update",
+          "actionable_type": "Useeng\\Origami\\Models\\Menu",
+          "actionable_id": 12,
+          "target_type": "Useeng\\Origami\\Models\\Menu",
+          "target_id": 12,
+          "model_type": "Useeng\\Origami\\Models\\Menu",
+          "model_id": 12,
+          "fields": "",
+          "status": "finished",
+          "exception": "",
+          "created_at": "2024-10-01T11:47:26",
+          "updated_at": "2024-10-01T11:47:26",
+          "original": "{\"menu_is_show\":true,\"is_using\":true}",
+          "changes": "{\"menu_is_show\":\"true\",\"is_using\":\"true\"}"
+        },
+        {
+          "id": 2,
+          "batch_id": "9d235653-c468-4e70-8e1a-9f70a4d8f264",
+          "user_id": 4,
+          "name": "Create",
+          "actionable_type": "App\\Models\\Customer",
+          "actionable_id": 1,
+          "target_type": "App\\Models\\Customer",
+          "target_id": 1,
+          "model_type": "App\\Models\\Customer",
+          "model_id": 1,
+          "fields": "",
+          "status": "finished",
+          "exception": "",
+          "created_at": "2024-10-01T11:49:37",
+          "updated_at": "2024-10-01T11:49:37",
+          "original": null,
+          "changes": "{\"name\":\"\\u30c7\\u30e2\\u7528\\u30d7\\u30ed\\u30b8\\u30a7\\u30af\\u30c8\",\"is_using\":\"true\",\"sort_order\":1,\"created_user_id\":4,\"created_function_name\":\"customers\",\"updated_user_id\":4,\"updated_function_name\":\"customers\",\"updated_at\":\"2024\\/10\\/01 02:49:37\",\"created_at\":\"2024\\/10\\/01 02:49:37\",\"id\":1}"
+        },
+        {
+          "id": 3,
+          "batch_id": "9d236d99-86ef-4204-822c-2d23d3230c43",
+          "user_id": 4,
+          "name": "Create",
+          "actionable_type": "App\\Models\\Project",
+          "actionable_id": 1,
+          "target_type": "App\\Models\\Project",
+          "target_id": 1,
+          "model_type": "App\\Models\\Project",
+          "model_id": 1,
+          "fields": "",
+          "status": "finished",
+          "exception": "",
+          "created_at": "2024-10-01T12:54:41",
+          "updated_at": "2024-10-01T12:54:41",
+          "original": null,
+          "changes": "{\"customer_id\":\"1\",\"name\":\"\\u5de5\\u6570\\u7ba1\\u7406\\u30b5\\u30fc\\u30d3\\u30b9\",\"project_code\":\"\",\"status_category_id\":\"1\",\"start_at\":\"2024\\/10\\/01 00:00:00\",\"end_at\":null,\"managing_user_id\":\"4\",\"is_all_members_project\":false,\"project_category_id\":\"1\",\"working_aggregate_period_id\":\"1\",\"description\":\"\",\"created_user_id\":4,\"created_function_name\":\"projects\",\"updated_user_id\":4,\"updated_function_name\":\"projects\",\"updated_at\":\"2024-10-01T03:54:41.000000Z\",\"created_at\":\"2024-10-01T03:54:41.000000Z\",\"id\":1}"
+        },
+        {
+          "id": 4,
+          "batch_id": "9d307943-975d-4457-890b-5dc354db0808",
+          "user_id": 4,
+          "name": "Update",
+          "actionable_type": "Useeng\\Origami\\Models\\Menu",
+          "actionable_id": 13,
+          "target_type": "Useeng\\Origami\\Models\\Menu",
+          "target_id": 13,
+          "model_type": "Useeng\\Origami\\Models\\Menu",
+          "model_id": 13,
+          "fields": "",
+          "status": "finished",
+          "exception": "",
+          "created_at": "2024-10-08T00:33:04",
+          "updated_at": "2024-10-08T00:33:04",
+          "original": "{\"menu_is_show\":true,\"is_using\":true}",
+          "changes": "{\"menu_is_show\":\"true\",\"is_using\":\"true\"}"
+        },
+        {
+          "id": 5,
+          "batch_id": "9d30794e-f7fa-4406-b754-556bc6b11e56",
+          "user_id": 4,
+          "name": "Update",
+          "actionable_type": "Useeng\\Origami\\Models\\Menu",
+          "actionable_id": 14,
+          "target_type": "Useeng\\Origami\\Models\\Menu",
+          "target_id": 14,
+          "model_type": "Useeng\\Origami\\Models\\Menu",
+          "model_id": 14,
+          "fields": "",
+          "status": "finished",
+          "exception": "",
+          "created_at": "2024-10-08T00:33:12",
+          "updated_at": "2024-10-08T00:33:12",
+          "original": "{\"menu_is_show\":true,\"is_using\":true}",
+          "changes": "{\"menu_is_show\":\"true\",\"is_using\":\"true\"}"
+        }
+      ]
+    },
+    "sumtime.aggregate_categories": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "１か月間",
+          "sort_order": 1,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 3,
+          "name": "３か月間",
+          "sort_order": 3,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 6,
+          "name": "６か月間",
+          "sort_order": 6,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 12,
+          "name": "１年間",
+          "sort_order": 7,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 99,
+          "name": "全期間",
+          "sort_order": 8,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.aggregate_closing_dates": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 15,
+          "name": "15日締め",
+          "sort_order": 3,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 31,
+          "name": "月末締め",
+          "sort_order": 6,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 5,
+          "name": "5日締め",
+          "sort_order": 1,
+          "is_using": false,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 10,
+          "name": "10日締め",
+          "sort_order": 2,
+          "is_using": false,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 20,
+          "name": "20日締め",
+          "sort_order": 4,
+          "is_using": false,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.aggregate_periods": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "表示中の月",
+          "sort_order": 1,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 2,
+          "name": "表示中の期間",
+          "sort_order": 2,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 3,
+          "name": "過去30日",
+          "sort_order": 3,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.aggregate_units": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "graph_category_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 4,
+          "name": "作業別",
+          "graph_category_id": 9,
+          "sort_order": 4,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 1,
+          "name": "案件区分別",
+          "graph_category_id": 1,
+          "sort_order": 1,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 2,
+          "name": "取引先別",
+          "graph_category_id": 1,
+          "sort_order": 2,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 3,
+          "name": "案件別",
+          "graph_category_id": 2,
+          "sort_order": 3,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.alert_notifications": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "mail_category_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "to",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "cc",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "is_notify",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": []
+    },
+    "sumtime.authority_categories": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "一般",
+          "sort_order": 1,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:41:40.700370",
+          "created_function_name": "init",
+          "updated_user_id": 0,
+          "updated_at": "2024-10-01T11:41:40.700370",
+          "updated_function_name": "init"
+        },
+        {
+          "id": 10,
+          "name": "管理者",
+          "sort_order": 17,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:41:40.700370",
+          "created_function_name": "init",
+          "updated_user_id": 0,
+          "updated_at": "2024-10-01T11:41:40.700370",
+          "updated_function_name": "init"
+        },
+        {
+          "id": 19,
+          "name": "システム管理者",
+          "sort_order": 19,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:41:40.700370",
+          "created_function_name": "init",
+          "updated_user_id": 0,
+          "updated_at": "2024-10-01T11:41:40.700370",
+          "updated_function_name": "init"
+        },
+        {
+          "id": 99,
+          "name": "システム開発者",
+          "sort_order": 99,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:41:40.700370",
+          "created_function_name": "init",
+          "updated_user_id": 0,
+          "updated_at": "2024-10-01T11:41:40.700370",
+          "updated_function_name": "init"
+        }
+      ]
+    },
+    "sumtime.authority_category_menu": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "nextval('authority_category_menu_id_seq'::regclass)"
+        },
+        {
+          "column_name": "authority_category_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "menu_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "authority_category_id": 1,
+          "menu_id": 1,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:46:18.934363",
+          "created_function_name": "init",
+          "updated_user_id": 0,
+          "updated_at": "2024-10-01T11:46:18.934363",
+          "updated_function_name": "init"
+        },
+        {
+          "id": 2,
+          "authority_category_id": 10,
+          "menu_id": 1,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:46:18.934363",
+          "created_function_name": "init",
+          "updated_user_id": 0,
+          "updated_at": "2024-10-01T11:46:18.934363",
+          "updated_function_name": "init"
+        },
+        {
+          "id": 3,
+          "authority_category_id": 19,
+          "menu_id": 1,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:46:18.934363",
+          "created_function_name": "init",
+          "updated_user_id": 0,
+          "updated_at": "2024-10-01T11:46:18.934363",
+          "updated_function_name": "init"
+        },
+        {
+          "id": 4,
+          "authority_category_id": 99,
+          "menu_id": 1,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:46:18.934363",
+          "created_function_name": "init",
+          "updated_user_id": 0,
+          "updated_at": "2024-10-01T11:46:18.934363",
+          "updated_function_name": "init"
+        },
+        {
+          "id": 6,
+          "authority_category_id": 10,
+          "menu_id": 2,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:46:18.934363",
+          "created_function_name": "init",
+          "updated_user_id": 0,
+          "updated_at": "2024-10-01T11:46:18.934363",
+          "updated_function_name": "init"
+        }
+      ]
+    },
+    "sumtime.auto_execution_logs": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('auto_execution_logs_id_seq'::regclass)"
+        },
+        {
+          "column_name": "output_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "process_category_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "log_category_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "filename",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "log_detail",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "supported_state_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "supported_memo",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 3,
+          "output_at": "2025-01-24T00:39:00",
+          "process_category_id": 2,
+          "log_category_id": 1,
+          "filename": "",
+          "log_detail": "[2025/01/24 00:39:00] DB バックアップの処理を開始します。\n[2025/01/24 00:39:00] DB バックアップの初期化処理を行います。\n[2025/01/24 00:39:00] 例外エラーが発生した為、DB バックアップの処理を終了します。",
+          "supported_state_id": 1,
+          "supported_memo": "",
+          "created_user_id": 0,
+          "created_at": "2025-01-24T00:39:00",
+          "created_function_name": null,
+          "updated_user_id": 0,
+          "updated_at": "2025-01-24T00:39:00",
+          "updated_function_name": null
+        },
+        {
+          "id": 5,
+          "output_at": "2025-01-24T00:41:49",
+          "process_category_id": 2,
+          "log_category_id": 1,
+          "filename": "",
+          "log_detail": "[2025/01/24 00:41:49] DB バックアップの処理を開始します。\n[2025/01/24 00:41:49] DB バックアップの初期化処理を行います。\n[2025/01/24 00:41:49] 出力先:/var/www/html/sumtime/src/storage/app/dbdump\n[2025/01/24 00:41:49] ダンプファイル名:sumtime_fri.dmp\n[2025/01/24 00:41:49] 例外エラーが発生した為、DB バックアップの処理を終了します。",
+          "supported_state_id": 1,
+          "supported_memo": "",
+          "created_user_id": 0,
+          "created_at": "2025-01-24T00:41:49",
+          "created_function_name": null,
+          "updated_user_id": 0,
+          "updated_at": "2025-01-24T00:41:49",
+          "updated_function_name": null
+        },
+        {
+          "id": 7,
+          "output_at": "2025-01-24T00:42:57",
+          "process_category_id": 2,
+          "log_category_id": 1,
+          "filename": "",
+          "log_detail": "[2025/01/24 00:42:57] DB バックアップの処理を開始します。\n[2025/01/24 00:42:57] DB バックアップの初期化処理を行います。\n[2025/01/24 00:42:57] 出力先:/var/www/html/sumtime/src/storage/app/dbdump\n[2025/01/24 00:42:57] ダンプファイル名:sumtime_fri.dmp\n[2025/01/24 00:42:57] 例外エラーが発生した為、DB バックアップの処理を終了します。",
+          "supported_state_id": 1,
+          "supported_memo": "",
+          "created_user_id": 0,
+          "created_at": "2025-01-24T00:42:57",
+          "created_function_name": null,
+          "updated_user_id": 0,
+          "updated_at": "2025-01-24T00:42:57",
+          "updated_function_name": null
+        },
+        {
+          "id": 9,
+          "output_at": "2025-01-24T00:43:35",
+          "process_category_id": 2,
+          "log_category_id": 1,
+          "filename": "",
+          "log_detail": "[2025/01/24 00:43:35] DB バックアップの処理を開始します。\n[2025/01/24 00:43:35] DB バックアップの初期化処理を行います。\n[2025/01/24 00:43:35] 出力先:/var/www/html/sumtime/src/storage/app/dbdump\n[2025/01/24 00:43:35] ダンプファイル名:sumtime_fri.dmp\n[2025/01/24 00:43:35] 例外エラーが発生した為、DB バックアップの処理を終了します。",
+          "supported_state_id": 1,
+          "supported_memo": "",
+          "created_user_id": 0,
+          "created_at": "2025-01-24T00:43:35",
+          "created_function_name": null,
+          "updated_user_id": 0,
+          "updated_at": "2025-01-24T00:43:35",
+          "updated_function_name": null
+        },
+        {
+          "id": 11,
+          "output_at": "2025-01-24T00:54:52",
+          "process_category_id": 2,
+          "log_category_id": 1,
+          "filename": "",
+          "log_detail": "[2025/01/24 00:54:52] DB バックアップの処理を開始します。\n[2025/01/24 00:54:52] DB バックアップの初期化処理を行います。\n[2025/01/24 00:54:52] 出力先:/var/www/html/sumtime/src/storage/app/dbdump\n[2025/01/24 00:54:52] ダンプファイル名:sumtime_fri.dmp\n[2025/01/24 00:54:52] 例外エラーが発生した為、DB バックアップの処理を終了します。",
+          "supported_state_id": 1,
+          "supported_memo": "",
+          "created_user_id": 0,
+          "created_at": "2025-01-24T00:54:52",
+          "created_function_name": null,
+          "updated_user_id": 0,
+          "updated_at": "2025-01-24T00:54:52",
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.break_time_schedules": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('break_time_schedules_id_seq'::regclass)"
+        },
+        {
+          "column_name": "working_user_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "break_time_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "start_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "end_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 403,
+          "working_user_id": 6,
+          "break_time_id": 1,
+          "start_at": "2025-03-31T12:00:00",
+          "end_at": "2025-03-31T13:00:00",
+          "created_user_id": 6,
+          "created_at": "2025-04-02T11:20:43",
+          "created_function_name": null,
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T11:20:43",
+          "updated_function_name": null
+        },
+        {
+          "id": 404,
+          "working_user_id": 6,
+          "break_time_id": 1,
+          "start_at": "2025-04-01T12:00:00",
+          "end_at": "2025-04-01T13:00:00",
+          "created_user_id": 6,
+          "created_at": "2025-04-02T11:20:43",
+          "created_function_name": null,
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T11:20:43",
+          "updated_function_name": null
+        },
+        {
+          "id": 405,
+          "working_user_id": 6,
+          "break_time_id": 1,
+          "start_at": "2025-04-02T12:00:00",
+          "end_at": "2025-04-02T13:00:00",
+          "created_user_id": 6,
+          "created_at": "2025-04-02T11:20:43",
+          "created_function_name": null,
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T11:20:43",
+          "updated_function_name": null
+        },
+        {
+          "id": 406,
+          "working_user_id": 6,
+          "break_time_id": 1,
+          "start_at": "2025-04-03T12:00:00",
+          "end_at": "2025-04-03T13:00:00",
+          "created_user_id": 6,
+          "created_at": "2025-04-02T11:20:43",
+          "created_function_name": null,
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T11:20:43",
+          "updated_function_name": null
+        },
+        {
+          "id": 407,
+          "working_user_id": 6,
+          "break_time_id": 1,
+          "start_at": "2025-04-04T12:00:00",
+          "end_at": "2025-04-04T13:00:00",
+          "created_user_id": 6,
+          "created_at": "2025-04-02T11:20:43",
+          "created_function_name": null,
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T11:20:43",
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.break_times": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('break_times_id_seq'::regclass)"
+        },
+        {
+          "column_name": "start_time",
+          "data_type": "time without time zone",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "end_time",
+          "data_type": "time without time zone",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "start_time": "12:00:00",
+          "end_time": "13:00:00",
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.customers": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('customers_id_seq'::regclass)"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "short_name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 4,
+          "name": "名古屋",
+          "short_name": "名古屋",
+          "sort_order": 19,
+          "is_using": true,
+          "created_user_id": 6,
+          "created_at": "2025-01-15T09:14:14",
+          "created_function_name": "customers",
+          "updated_user_id": 6,
+          "updated_at": "2025-03-19T17:09:23",
+          "updated_function_name": "customers"
+        },
+        {
+          "id": 2,
+          "name": "社内",
+          "short_name": "社内",
+          "sort_order": 20,
+          "is_using": true,
+          "created_user_id": 4,
+          "created_at": "2025-01-08T18:32:47",
+          "created_function_name": "customers",
+          "updated_user_id": 6,
+          "updated_at": "2025-03-19T17:09:23",
+          "updated_function_name": "customers"
+        },
+        {
+          "id": 17,
+          "name": "中京大",
+          "short_name": "中京大",
+          "sort_order": 15,
+          "is_using": true,
+          "created_user_id": 6,
+          "created_at": "2025-01-21T14:20:24",
+          "created_function_name": "customers",
+          "updated_user_id": 6,
+          "updated_at": "2025-03-19T17:09:26",
+          "updated_function_name": "customers"
+        },
+        {
+          "id": 18,
+          "name": "日通電",
+          "short_name": "日通電",
+          "sort_order": 16,
+          "is_using": true,
+          "created_user_id": 6,
+          "created_at": "2025-01-21T14:20:28",
+          "created_function_name": "customers",
+          "updated_user_id": 6,
+          "updated_at": "2025-03-19T17:09:26",
+          "updated_function_name": "customers"
+        },
+        {
+          "id": 15,
+          "name": "小牧",
+          "short_name": "小牧",
+          "sort_order": 17,
+          "is_using": true,
+          "created_user_id": 6,
+          "created_at": "2025-01-21T14:20:15",
+          "created_function_name": "customers",
+          "updated_user_id": 6,
+          "updated_at": "2025-03-19T17:09:26",
+          "updated_function_name": "customers"
+        }
+      ]
+    },
+    "sumtime.failed_jobs": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('failed_jobs_id_seq'::regclass)"
+        },
+        {
+          "column_name": "uuid",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "connection",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "queue",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "payload",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "exception",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "failed_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "NO",
+          "column_default": "CURRENT_TIMESTAMP"
+        }
+      ],
+      "sample_data": []
+    },
+    "sumtime.field_heights": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "value",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 2,
+          "name": "記入欄1行",
+          "value": 48,
+          "sort_order": 1,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 4,
+          "name": "記入欄2行",
+          "value": 68,
+          "sort_order": 2,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 6,
+          "name": "記入欄3行",
+          "value": 88,
+          "sort_order": 3,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.form_fields": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "nextval('form_fields_id_seq'::regclass)"
+        },
+        {
+          "column_name": "menu_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "panel_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "description",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": []
+    },
+    "sumtime.function_visible_setiings": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "field1_is_visible",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "false"
+        },
+        {
+          "column_name": "field1_label",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "field1_height_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "field2_is_visible",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "false"
+        },
+        {
+          "column_name": "field2_label",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "field2_height_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "field3_is_visible",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "false"
+        },
+        {
+          "column_name": "field3_label",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "field3_height_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "field1_is_visible": true,
+          "field1_label": "今週の完了予定",
+          "field1_height_id": 6,
+          "field2_is_visible": true,
+          "field2_label": "その他 報告事項",
+          "field2_height_id": 2,
+          "field3_is_visible": false,
+          "field3_label": "",
+          "field3_height_id": 0,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.graph_categories": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "円グラフ",
+          "sort_order": 1,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 2,
+          "name": "ツリーマップ",
+          "sort_order": 2,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 9,
+          "name": "表示しない",
+          "sort_order": 9,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.io_settings": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "process_category_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "target_path",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "backup_path",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "backup_retention_days",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "remote_type",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "remote_path",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "remote_user",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "remote_password",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "mount_path",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "mount_sub_directory",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "is_privilege",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "false"
+        },
+        {
+          "column_name": "file_pattern",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "import_character_code",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "process_category_id": 2,
+          "target_path": "",
+          "backup_path": "app/dbdump",
+          "backup_retention_days": 0,
+          "remote_type": "",
+          "remote_path": "",
+          "remote_user": "",
+          "remote_password": "",
+          "mount_path": "",
+          "mount_sub_directory": "",
+          "is_privilege": true,
+          "file_pattern": "",
+          "import_character_code": "",
+          "created_user_id": 0,
+          "created_at": "2025-01-24T00:41:04.549993",
+          "created_function_name": "",
+          "updated_user_id": 0,
+          "updated_at": "2025-01-24T00:41:04.549993",
+          "updated_function_name": ""
+        }
+      ]
+    },
+    "sumtime.jobs": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('jobs_id_seq'::regclass)"
+        },
+        {
+          "column_name": "queue",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "payload",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "attempts",
+          "data_type": "smallint",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "reserved_at",
+          "data_type": "integer",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "available_at",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "sample_data": []
+    },
+    "sumtime.log_categories": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "実行履歴",
+          "sort_order": 1,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": "2025-01-24T00:38:53.325108",
+          "created_function_name": "",
+          "updated_user_id": 0,
+          "updated_at": "2025-01-24T00:38:53.325108",
+          "updated_function_name": ""
+        },
+        {
+          "id": 2,
+          "name": "実行結果",
+          "sort_order": 2,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": "2025-01-24T00:38:53.325108",
+          "created_function_name": "",
+          "updated_user_id": 0,
+          "updated_at": "2025-01-24T00:38:53.325108",
+          "updated_function_name": ""
+        },
+        {
+          "id": 99,
+          "name": "エラー（例外）",
+          "sort_order": 99,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": "2025-01-24T00:38:53.325108",
+          "created_function_name": "",
+          "updated_user_id": 0,
+          "updated_at": "2025-01-24T00:38:53.325108",
+          "updated_function_name": ""
+        }
+      ]
+    },
+    "sumtime.menus": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "parent_menu_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "resource_name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "icon_name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "menu_is_show",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 4,
+          "parent_menu_id": 0,
+          "name": "メンテナンス",
+          "resource_name": "/sumtime/maintenance",
+          "icon_name": "adjustments",
+          "menu_is_show": true,
+          "is_using": true,
+          "sort_order": 4,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:46:18.912373",
+          "created_function_name": "init",
+          "updated_user_id": 0,
+          "updated_at": "2024-10-01T11:46:18.912373",
+          "updated_function_name": "init"
+        },
+        {
+          "id": 11,
+          "parent_menu_id": 0,
+          "name": "予定管理",
+          "resource_name": "/sumtime/app",
+          "icon_name": "calendar",
+          "menu_is_show": true,
+          "is_using": true,
+          "sort_order": 3,
+          "created_user_id": 1,
+          "created_at": "2023-11-07T15:36:35",
+          "created_function_name": "menus",
+          "updated_user_id": 1,
+          "updated_at": "2023-11-07T17:08:54",
+          "updated_function_name": "menus"
+        },
+        {
+          "id": 16,
+          "parent_menu_id": 11,
+          "name": "作業照会",
+          "resource_name": "ManhoursList",
+          "icon_name": "",
+          "menu_is_show": true,
+          "is_using": true,
+          "sort_order": 2,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 12,
+          "updated_at": "2025-03-25T09:23:06",
+          "updated_function_name": "menus"
+        },
+        {
+          "id": 1,
+          "parent_menu_id": 0,
+          "name": "ダッシュボード",
+          "resource_name": "HomeDashboard",
+          "icon_name": "home",
+          "menu_is_show": false,
+          "is_using": true,
+          "sort_order": 1,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:46:18.912373",
+          "created_function_name": "init",
+          "updated_user_id": 0,
+          "updated_at": "2024-10-01T11:46:18.912373",
+          "updated_function_name": "init"
+        },
+        {
+          "id": 2,
+          "parent_menu_id": 0,
+          "name": "プロジェクト管理",
+          "resource_name": "/sumtime/app",
+          "icon_name": "clipboard",
+          "menu_is_show": true,
+          "is_using": true,
+          "sort_order": 2,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:46:18.912373",
+          "created_function_name": "init",
+          "updated_user_id": 8,
+          "updated_at": "2025-04-05T23:40:27",
+          "updated_function_name": "menus"
+        }
+      ]
+    },
+    "sumtime.migrations": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "nextval('migrations_id_seq'::regclass)"
+        },
+        {
+          "column_name": "migration",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "batch",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "migration": "2014_10_12_000000_create_users_table",
+          "batch": 1
+        },
+        {
+          "id": 2,
+          "migration": "2014_10_12_100000_create_password_resets_table",
+          "batch": 1
+        },
+        {
+          "id": 3,
+          "migration": "2018_01_01_000000_create_action_events_table",
+          "batch": 1
+        },
+        {
+          "id": 4,
+          "migration": "2019_05_10_000000_add_fields_to_action_events_table",
+          "batch": 1
+        },
+        {
+          "id": 5,
+          "migration": "2019_08_19_000000_create_failed_jobs_table",
+          "batch": 1
+        }
+      ]
+    },
+    "sumtime.nova_field_attachments": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "nextval('nova_field_attachments_id_seq'::regclass)"
+        },
+        {
+          "column_name": "attachable_type",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "attachable_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "attachment",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "disk",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "url",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": []
+    },
+    "sumtime.nova_notifications": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "type",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "notifiable_type",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "notifiable_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "data",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "read_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "deleted_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": []
+    },
+    "sumtime.nova_pending_field_attachments": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "nextval('nova_pending_field_attachments_id_seq'::regclass)"
+        },
+        {
+          "column_name": "draft_id",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "attachment",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "disk",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": []
+    },
+    "sumtime.panels": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "component_name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "見出",
+          "component_name": "header",
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": "2024-10-01T11:46:18.923153",
+          "created_function_name": "init",
+          "updated_user_id": 0,
+          "updated_at": "2024-10-01T11:46:18.923153",
+          "updated_function_name": "init"
+        }
+      ]
+    },
+    "sumtime.password_resets": {
+      "columns": [
+        {
+          "column_name": "email",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "token",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": []
+    },
+    "sumtime.personal_access_tokens": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('personal_access_tokens_id_seq'::regclass)"
+        },
+        {
+          "column_name": "tokenable_type",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "tokenable_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "name",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "token",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "abilities",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "last_used_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": []
+    },
+    "sumtime.process_categories": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "(システム)自動管理ログ",
+          "sort_order": 1,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": "2025-01-24T00:37:05.106590",
+          "created_function_name": "",
+          "updated_user_id": 0,
+          "updated_at": "2025-01-24T00:37:05.106590",
+          "updated_function_name": ""
+        },
+        {
+          "id": 2,
+          "name": "(システム)DBﾊﾞｯｸｱｯﾌﾟ",
+          "sort_order": 2,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": "2025-01-24T00:37:05.106590",
+          "created_function_name": "",
+          "updated_user_id": 0,
+          "updated_at": "2025-01-24T00:37:05.106590",
+          "updated_function_name": ""
+        }
+      ]
+    },
+    "sumtime.project_categories": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('project_categories_id_seq'::regclass)"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "graph_category_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "graph_color",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "is_initial_show",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "請負",
+          "graph_category_id": 1,
+          "graph_color": "#006fbc",
+          "is_initial_show": false,
+          "sort_order": 1,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 8,
+          "updated_at": "2025-04-08T16:01:57",
+          "updated_function_name": "project-categories"
+        },
+        {
+          "id": 2,
+          "name": "準委任",
+          "graph_category_id": 1,
+          "graph_color": "#04af7a",
+          "is_initial_show": false,
+          "sort_order": 2,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 8,
+          "updated_at": "2025-04-08T16:02:01",
+          "updated_function_name": "project-categories"
+        },
+        {
+          "id": 3,
+          "name": "保守",
+          "graph_category_id": 1,
+          "graph_color": "#f5a200",
+          "is_initial_show": false,
+          "sort_order": 3,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 8,
+          "updated_at": "2025-04-08T16:02:06",
+          "updated_function_name": "project-categories"
+        },
+        {
+          "id": 4,
+          "name": "間接",
+          "graph_category_id": 1,
+          "graph_color": "#9a9a9a",
+          "is_initial_show": false,
+          "sort_order": 4,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 8,
+          "updated_at": "2025-04-08T16:02:10",
+          "updated_function_name": "project-categories"
+        }
+      ]
+    },
+    "sumtime.project_display_orders": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "案件名順",
+          "sort_order": 1,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 2,
+          "name": "取引先順",
+          "sort_order": 2,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 5,
+          "name": "案件区分＋案件名順",
+          "sort_order": 5,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 6,
+          "name": "案件区分＋取引先順",
+          "sort_order": 6,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 3,
+          "name": "開始日の新しい順",
+          "sort_order": 3,
+          "is_using": false,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.projects": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('projects_id_seq'::regclass)"
+        },
+        {
+          "column_name": "customer_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "project_category_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "aggregate_category_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "aggregate_start_month",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "aggregate_closing_date_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "schedule_time_input_unit_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "schedule_time",
+          "data_type": "numeric",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "managing_user_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_all_worker_project",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "false"
+        },
+        {
+          "column_name": "description",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "is_archiving",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "false"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 24,
+          "customer_id": 16,
+          "name": "保守",
+          "project_category_id": 3,
+          "aggregate_category_id": 3,
+          "aggregate_start_month": 4,
+          "aggregate_closing_date_id": 31,
+          "schedule_time_input_unit_id": 1,
+          "schedule_time": 72.0,
+          "managing_user_id": 8,
+          "is_all_worker_project": false,
+          "description": "2025/07～09 前月8時間不足分",
+          "is_archiving": false,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T18:57:38",
+          "created_function_name": "projects",
+          "updated_user_id": 8,
+          "updated_at": "2025-07-10T18:36:08",
+          "updated_function_name": "projects"
+        },
+        {
+          "id": 2,
+          "customer_id": 2,
+          "name": "環境整備",
+          "project_category_id": 4,
+          "aggregate_category_id": 12,
+          "aggregate_start_month": 4,
+          "aggregate_closing_date_id": 31,
+          "schedule_time_input_unit_id": 9,
+          "schedule_time": 0.0,
+          "managing_user_id": 6,
+          "is_all_worker_project": true,
+          "description": "",
+          "is_archiving": false,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T10:45:05",
+          "created_function_name": "projects",
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T11:02:53",
+          "updated_function_name": "projects"
+        },
+        {
+          "id": 3,
+          "customer_id": 2,
+          "name": "営業",
+          "project_category_id": 4,
+          "aggregate_category_id": 12,
+          "aggregate_start_month": 4,
+          "aggregate_closing_date_id": 31,
+          "schedule_time_input_unit_id": 9,
+          "schedule_time": 0.0,
+          "managing_user_id": 6,
+          "is_all_worker_project": false,
+          "description": "",
+          "is_archiving": false,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T10:45:48",
+          "created_function_name": "projects",
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T11:21:56",
+          "updated_function_name": "projects"
+        },
+        {
+          "id": 4,
+          "customer_id": 2,
+          "name": "人事",
+          "project_category_id": 4,
+          "aggregate_category_id": 12,
+          "aggregate_start_month": 4,
+          "aggregate_closing_date_id": 31,
+          "schedule_time_input_unit_id": 9,
+          "schedule_time": 0.0,
+          "managing_user_id": 6,
+          "is_all_worker_project": false,
+          "description": "",
+          "is_archiving": false,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T10:46:42",
+          "created_function_name": "projects",
+          "updated_user_id": 6,
+          "updated_at": "2025-08-12T15:37:32",
+          "updated_function_name": "projects"
+        },
+        {
+          "id": 8,
+          "customer_id": 7,
+          "name": "リコールHP対応",
+          "project_category_id": 1,
+          "aggregate_category_id": 99,
+          "aggregate_start_month": 0,
+          "aggregate_closing_date_id": 0,
+          "schedule_time_input_unit_id": 1,
+          "schedule_time": 180.0,
+          "managing_user_id": 7,
+          "is_all_worker_project": false,
+          "description": "",
+          "is_archiving": false,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T17:59:00",
+          "created_function_name": "projects",
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T17:59:00",
+          "updated_function_name": "projects"
+        }
+      ]
+    },
+    "sumtime.schedule_time_input_units": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 9,
+          "name": "予実管理しない",
+          "sort_order": 9,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 1,
+          "name": "案件毎に入力",
+          "sort_order": 1,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 2,
+          "name": "作業毎に入力",
+          "sort_order": 2,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.start_weekdays": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "日曜日",
+          "sort_order": 1,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 2,
+          "name": "月曜日",
+          "sort_order": 2,
+          "is_using": true,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.supported_states": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "対象外",
+          "sort_order": 0,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 0,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 2,
+          "name": "未対応",
+          "sort_order": 0,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 0,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 3,
+          "name": "対応中",
+          "sort_order": 0,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 0,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 4,
+          "name": "対応済",
+          "sort_order": 0,
+          "is_using": true,
+          "created_user_id": 0,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 0,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.template_working_categories": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('template_working_categories_id_seq'::regclass)"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "description",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "請負",
+          "description": "",
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 2,
+          "name": "保守",
+          "description": "",
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 3,
+          "name": "準委任",
+          "description": "",
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.template_working_schedules": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('template_working_schedules_id_seq'::regclass)"
+        },
+        {
+          "column_name": "template_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "template_working_category_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "template_working_subcategory_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "schedule_time",
+          "data_type": "numeric",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "description",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 10,
+          "template_id": 2,
+          "template_working_category_id": null,
+          "template_working_subcategory_id": null,
+          "name": "不具合対応",
+          "schedule_time": 0.0,
+          "description": "不具合に関する対応時間（USEに瑕疵あり）",
+          "sort_order": 1,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 12,
+          "template_id": 2,
+          "template_working_category_id": null,
+          "template_working_subcategory_id": null,
+          "name": "運用支援",
+          "schedule_time": 0.0,
+          "description": "運用に関する、確認、調査、集計、報告等の時間",
+          "sort_order": 3,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 11,
+          "template_id": 2,
+          "template_working_category_id": null,
+          "template_working_subcategory_id": null,
+          "name": "障害対応",
+          "schedule_time": 0.0,
+          "description": "障害発生時の対応時間（USEに瑕疵なし）",
+          "sort_order": 2,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 13,
+          "template_id": 2,
+          "template_working_category_id": null,
+          "template_working_subcategory_id": null,
+          "name": "環境整備",
+          "schedule_time": 0.0,
+          "description": "環境調査や設定、機材選定や設置などの対応時間\r\n",
+          "sort_order": 4,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 14,
+          "template_id": 2,
+          "template_working_category_id": null,
+          "template_working_subcategory_id": null,
+          "name": "要望対応",
+          "schedule_time": 0.0,
+          "description": "改善要望や機能追加に関する対応時間\r\n",
+          "sort_order": 5,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.templates": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('templates_id_seq'::regclass)"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "name": "請負",
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 2,
+          "name": "保守",
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "id": 3,
+          "name": "準委任",
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.user_favorites": {
+      "columns": [
+        {
+          "column_name": "user_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "working_schedule_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "user_id": 12,
+          "working_schedule_id": 8,
+          "created_user_id": 12,
+          "created_at": "2025-07-14T18:11:50",
+          "created_function_name": null,
+          "updated_user_id": 12,
+          "updated_at": "2025-07-14T18:11:50",
+          "updated_function_name": null
+        },
+        {
+          "user_id": 7,
+          "working_schedule_id": 63,
+          "created_user_id": 7,
+          "created_at": "2025-07-31T09:06:31",
+          "created_function_name": null,
+          "updated_user_id": 7,
+          "updated_at": "2025-07-31T09:06:31",
+          "updated_function_name": null
+        },
+        {
+          "user_id": 12,
+          "working_schedule_id": 117,
+          "created_user_id": 12,
+          "created_at": "2025-07-31T17:43:15",
+          "created_function_name": null,
+          "updated_user_id": 12,
+          "updated_at": "2025-07-31T17:43:15",
+          "updated_function_name": null
+        },
+        {
+          "user_id": 14,
+          "working_schedule_id": 44,
+          "created_user_id": 14,
+          "created_at": "2025-08-01T18:36:57",
+          "created_function_name": null,
+          "updated_user_id": 14,
+          "updated_at": "2025-08-01T18:36:57",
+          "updated_function_name": null
+        },
+        {
+          "user_id": 11,
+          "working_schedule_id": 117,
+          "created_user_id": 11,
+          "created_at": "2025-08-18T19:00:15",
+          "created_function_name": null,
+          "updated_user_id": 11,
+          "updated_at": "2025-08-18T19:00:15",
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.user_open_projects": {
+      "columns": [
+        {
+          "column_name": "user_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "project_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "user_id": 18,
+          "project_id": 29,
+          "created_user_id": 18,
+          "created_at": "2025-07-25T17:18:43",
+          "created_function_name": null,
+          "updated_user_id": 18,
+          "updated_at": "2025-07-25T17:18:43",
+          "updated_function_name": null
+        },
+        {
+          "user_id": 7,
+          "project_id": 43,
+          "created_user_id": 7,
+          "created_at": "2026-01-16T10:32:44",
+          "created_function_name": null,
+          "updated_user_id": 7,
+          "updated_at": "2026-01-16T10:32:44",
+          "updated_function_name": null
+        },
+        {
+          "user_id": 5,
+          "project_id": 36,
+          "created_user_id": 5,
+          "created_at": "2025-07-04T20:33:27",
+          "created_function_name": null,
+          "updated_user_id": 5,
+          "updated_at": "2025-07-04T20:33:27",
+          "updated_function_name": null
+        },
+        {
+          "user_id": 5,
+          "project_id": 10,
+          "created_user_id": 5,
+          "created_at": "2025-07-04T20:33:29",
+          "created_function_name": null,
+          "updated_user_id": 5,
+          "updated_at": "2025-07-04T20:33:29",
+          "updated_function_name": null
+        },
+        {
+          "user_id": 7,
+          "project_id": 15,
+          "created_user_id": 7,
+          "created_at": "2025-04-24T18:52:48",
+          "created_function_name": null,
+          "updated_user_id": 7,
+          "updated_at": "2025-04-24T18:52:48",
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.user_open_working_categories": {
+      "columns": [
+        {
+          "column_name": "user_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "working_category_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": []
+    },
+    "sumtime.user_settings": {
+      "columns": [
+        {
+          "column_name": "user_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "related_project_is_visible",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "favorite_work_is_visible",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "false"
+        },
+        {
+          "column_name": "project_display_order_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "1"
+        },
+        {
+          "column_name": "aggregate_unit_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "4"
+        },
+        {
+          "column_name": "aggregate_period_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "1"
+        },
+        {
+          "column_name": "saturday_is_visible",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "false"
+        },
+        {
+          "column_name": "sunday_is_visible",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "false"
+        },
+        {
+          "column_name": "start_weekday_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "2"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "user_id": 10,
+          "related_project_is_visible": true,
+          "favorite_work_is_visible": false,
+          "project_display_order_id": 1,
+          "aggregate_unit_id": 4,
+          "aggregate_period_id": 1,
+          "saturday_is_visible": false,
+          "sunday_is_visible": false,
+          "start_weekday_id": 2,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T13:08:26",
+          "created_function_name": null,
+          "updated_user_id": 10,
+          "updated_at": "2025-06-11T16:53:32",
+          "updated_function_name": null
+        },
+        {
+          "user_id": 16,
+          "related_project_is_visible": true,
+          "favorite_work_is_visible": false,
+          "project_display_order_id": 1,
+          "aggregate_unit_id": 4,
+          "aggregate_period_id": 1,
+          "saturday_is_visible": false,
+          "sunday_is_visible": false,
+          "start_weekday_id": 2,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T13:08:19",
+          "created_function_name": null,
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T13:08:19",
+          "updated_function_name": null
+        },
+        {
+          "user_id": 5,
+          "related_project_is_visible": true,
+          "favorite_work_is_visible": false,
+          "project_display_order_id": 1,
+          "aggregate_unit_id": 1,
+          "aggregate_period_id": 2,
+          "saturday_is_visible": false,
+          "sunday_is_visible": false,
+          "start_weekday_id": 2,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T13:08:18",
+          "created_function_name": null,
+          "updated_user_id": 5,
+          "updated_at": "2025-12-17T14:00:15",
+          "updated_function_name": null
+        },
+        {
+          "user_id": 14,
+          "related_project_is_visible": true,
+          "favorite_work_is_visible": false,
+          "project_display_order_id": 2,
+          "aggregate_unit_id": 4,
+          "aggregate_period_id": 1,
+          "saturday_is_visible": false,
+          "sunday_is_visible": false,
+          "start_weekday_id": 2,
+          "created_user_id": 8,
+          "created_at": "2025-04-04T10:23:21",
+          "created_function_name": null,
+          "updated_user_id": 14,
+          "updated_at": "2026-01-26T18:36:42",
+          "updated_function_name": null
+        },
+        {
+          "user_id": 9,
+          "related_project_is_visible": true,
+          "favorite_work_is_visible": false,
+          "project_display_order_id": 5,
+          "aggregate_unit_id": 2,
+          "aggregate_period_id": 1,
+          "saturday_is_visible": false,
+          "sunday_is_visible": false,
+          "start_weekday_id": 2,
+          "created_user_id": 8,
+          "created_at": "2025-04-04T10:23:09",
+          "created_function_name": null,
+          "updated_user_id": 9,
+          "updated_at": "2026-02-10T18:04:57",
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.users": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('users_id_seq'::regclass)"
+        },
+        {
+          "column_name": "name",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "email",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "email_verified_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "password",
+          "data_type": "character varying",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "remember_token",
+          "data_type": "character varying",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "kana",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "account",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "authority_category_id",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "is_using",
+          "data_type": "boolean",
+          "is_nullable": "NO",
+          "column_default": "true"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 7,
+          "name": "黒柳裕馬",
+          "email": "y-kuroyanagi@use-eng.co.jp",
+          "email_verified_at": null,
+          "password": "$2y$10$zNOnG6gKyu4RH1CYmpz/HuVL4AVA4qZTB1KXF0MXZCggmgJIyioLm",
+          "remember_token": "AfQtV2EPcnIOSKvyj7UyiBdh9YDUB8rEWT4UzeGEcUkQ4EvQsCdeWwnZ7aXM",
+          "kana": "",
+          "account": "y-kuroyanagi",
+          "authority_category_id": 10,
+          "is_using": true,
+          "sort_order": 0,
+          "created_user_id": 0,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 7,
+          "updated_at": "2025-04-07T13:30:30",
+          "updated_function_name": null
+        },
+        {
+          "id": 11,
+          "name": "山口敬史",
+          "email": "h-yamaguchi@use-eng.co.jp",
+          "email_verified_at": null,
+          "password": "$2y$10$Kxe7vtmwN4gE7pnUJacyO.1MOxEB8Z..ZeA.1zTziPMTCBYXosgnK",
+          "remember_token": "DS72kzHg20crlqAdz1tDo4tV1pk6kGIy23KVVF3H0Uri89zVyRhZSdEnnpQN",
+          "kana": "",
+          "account": "h-yamaguchi",
+          "authority_category_id": 10,
+          "is_using": true,
+          "sort_order": 0,
+          "created_user_id": 0,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 11,
+          "updated_at": "2024-10-09T09:21:11",
+          "updated_function_name": null
+        },
+        {
+          "id": 14,
+          "name": "田中一輝",
+          "email": "k-tanaka@use-eng.co.jp",
+          "email_verified_at": null,
+          "password": "$2y$10$F29cjv/lA64lC1o54c65Ku4OvTCj7y7pXSwMxDIVZm.ovi7oBY1jm",
+          "remember_token": "uh6nircC0LegpeQvBCio13A1fxR1Sec1xtB0RoZei4RvRAC1B206eQtZ9dav",
+          "kana": "",
+          "account": "k-tanaka",
+          "authority_category_id": 10,
+          "is_using": true,
+          "sort_order": 0,
+          "created_user_id": 0,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 6,
+          "updated_at": "2025-04-07T13:30:48",
+          "updated_function_name": "users"
+        },
+        {
+          "id": 9,
+          "name": "藤田拓弥",
+          "email": "t-fujita@use-eng.co.jp",
+          "email_verified_at": null,
+          "password": "$2y$10$SiXpyxMNAI/yYKSKM68mKuL1u5Ba0pdBeZ6XOIRHZW3VmGsBwNw0.",
+          "remember_token": "L15O2SDJSx3DtqKvjChaWSg40JwbD770cqG4gpiRhEVj83XN0yEx6wRTBIum",
+          "kana": "",
+          "account": "t-fujita",
+          "authority_category_id": 10,
+          "is_using": true,
+          "sort_order": 0,
+          "created_user_id": 0,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 9,
+          "updated_at": "2025-04-07T13:30:35",
+          "updated_function_name": null
+        },
+        {
+          "id": 17,
+          "name": "竹田恭太",
+          "email": "k-takeda@use-eng.co.jp",
+          "email_verified_at": null,
+          "password": "$2y$10$tqxRcXrG0oZBN6B.pudHwezrcARUqo6mlbE6Trd9kRGoqjDQK57uS",
+          "remember_token": "QPbM6ZJMk68x84oxYRq0IyEw1ZqUUUumNlFTpETncl5i2l6vw1z8WQgSKZID",
+          "kana": "",
+          "account": "k-takeda",
+          "authority_category_id": 10,
+          "is_using": true,
+          "sort_order": 0,
+          "created_user_id": 0,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": 17,
+          "updated_at": "2025-04-07T13:31:03",
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.weekly_input_fields": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('weekly_input_fields_id_seq'::regclass)"
+        },
+        {
+          "column_name": "user_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "target_week_date",
+          "data_type": "date",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "field1_contents",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "field2_contents",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "field3_contents",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 66,
+          "user_id": 10,
+          "target_week_date": "2025-04-14",
+          "field1_contents": "",
+          "field2_contents": "",
+          "field3_contents": "",
+          "created_user_id": 6,
+          "created_at": "2025-05-29T15:51:35",
+          "created_function_name": null,
+          "updated_user_id": 6,
+          "updated_at": "2025-05-29T15:51:35",
+          "updated_function_name": null
+        },
+        {
+          "id": 52,
+          "user_id": 9,
+          "target_week_date": "2025-05-26",
+          "field1_contents": "",
+          "field2_contents": "toroccaにログイン不可の件、先方に連絡済みで確認回答待ち",
+          "field3_contents": "",
+          "created_user_id": 9,
+          "created_at": "2025-05-23T14:41:01",
+          "created_function_name": null,
+          "updated_user_id": 9,
+          "updated_at": "2025-05-23T14:43:44",
+          "updated_function_name": null
+        },
+        {
+          "id": 2,
+          "user_id": 8,
+          "target_week_date": "2025-05-26",
+          "field1_contents": "",
+          "field2_contents": "",
+          "field3_contents": "",
+          "created_user_id": 8,
+          "created_at": "2025-05-20T23:28:45",
+          "created_function_name": null,
+          "updated_user_id": 8,
+          "updated_at": "2025-05-20T23:28:45",
+          "updated_function_name": null
+        },
+        {
+          "id": 3,
+          "user_id": 9,
+          "target_week_date": "2025-05-19",
+          "field1_contents": "",
+          "field2_contents": "",
+          "field3_contents": "",
+          "created_user_id": 9,
+          "created_at": "2025-05-21T08:52:58",
+          "created_function_name": null,
+          "updated_user_id": 9,
+          "updated_at": "2025-05-21T08:52:58",
+          "updated_function_name": null
+        },
+        {
+          "id": 4,
+          "user_id": 12,
+          "target_week_date": "2025-05-19",
+          "field1_contents": "",
+          "field2_contents": "",
+          "field3_contents": "",
+          "created_user_id": 12,
+          "created_at": "2025-05-21T08:53:12",
+          "created_function_name": null,
+          "updated_user_id": 12,
+          "updated_at": "2025-05-21T08:53:12",
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.workers": {
+      "columns": [
+        {
+          "column_name": "project_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "working_user_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "project_id": 3,
+          "working_user_id": 6,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "project_id": 4,
+          "working_user_id": 6,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "project_id": 5,
+          "working_user_id": 6,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "project_id": 6,
+          "working_user_id": 8,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        },
+        {
+          "project_id": 7,
+          "working_user_id": 7,
+          "created_user_id": null,
+          "created_at": null,
+          "created_function_name": null,
+          "updated_user_id": null,
+          "updated_at": null,
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.working_achievements": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('working_achievements_id_seq'::regclass)"
+        },
+        {
+          "column_name": "working_schedule_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "working_user_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "start_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "end_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "achievement_time",
+          "data_type": "numeric",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "working_memo",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 95,
+          "working_schedule_id": 118,
+          "working_user_id": 8,
+          "start_at": "2025-04-07T12:00:00",
+          "end_at": "2025-04-07T12:30:00",
+          "achievement_time": 0.5,
+          "working_memo": "リリース",
+          "created_user_id": 8,
+          "created_at": "2025-04-05T11:49:54",
+          "created_function_name": null,
+          "updated_user_id": 8,
+          "updated_at": "2025-04-07T12:23:57",
+          "updated_function_name": null
+        },
+        {
+          "id": 52,
+          "working_schedule_id": 141,
+          "working_user_id": 6,
+          "start_at": "2025-04-03T16:00:00",
+          "end_at": "2025-04-03T17:30:00",
+          "achievement_time": 1.5,
+          "working_memo": "",
+          "created_user_id": 6,
+          "created_at": "2025-04-04T17:23:56",
+          "created_function_name": null,
+          "updated_user_id": 6,
+          "updated_at": "2025-04-04T17:24:00",
+          "updated_function_name": null
+        },
+        {
+          "id": 34,
+          "working_schedule_id": 6,
+          "working_user_id": 6,
+          "start_at": "2025-04-03T14:00:00",
+          "end_at": "2025-04-03T16:00:00",
+          "achievement_time": 2.0,
+          "working_memo": "コクヨ見積",
+          "created_user_id": 6,
+          "created_at": "2025-04-03T15:58:00",
+          "created_function_name": null,
+          "updated_user_id": 6,
+          "updated_at": "2025-04-03T15:58:21",
+          "updated_function_name": null
+        },
+        {
+          "id": 2,
+          "working_schedule_id": 6,
+          "working_user_id": 6,
+          "start_at": "2025-04-01T13:00:00",
+          "end_at": "2025-04-01T15:30:00",
+          "achievement_time": 2.5,
+          "working_memo": "",
+          "created_user_id": 6,
+          "created_at": "2025-04-02T19:03:29",
+          "created_function_name": null,
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T19:03:39",
+          "updated_function_name": null
+        },
+        {
+          "id": 556,
+          "working_schedule_id": 67,
+          "working_user_id": 9,
+          "start_at": "2025-04-16T09:00:00",
+          "end_at": "2025-04-16T12:00:00",
+          "achievement_time": 3.0,
+          "working_memo": "",
+          "created_user_id": 9,
+          "created_at": "2025-04-10T12:27:08",
+          "created_function_name": null,
+          "updated_user_id": 9,
+          "updated_at": "2025-04-10T12:27:08",
+          "updated_function_name": null
+        }
+      ]
+    },
+    "sumtime.working_categories": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('working_categories_id_seq'::regclass)"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": []
+    },
+    "sumtime.working_schedules": {
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "nextval('working_schedules_id_seq'::regclass)"
+        },
+        {
+          "column_name": "project_id",
+          "data_type": "bigint",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "working_category_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "working_subcategory_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "name",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "schedule_time",
+          "data_type": "numeric",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "description",
+          "data_type": "text",
+          "is_nullable": "NO",
+          "column_default": "''::text"
+        },
+        {
+          "column_name": "sort_order",
+          "data_type": "integer",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "column_name": "created_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "created_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_user_id",
+          "data_type": "bigint",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp without time zone",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "column_name": "updated_function_name",
+          "data_type": "text",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "sample_data": [
+        {
+          "id": 1,
+          "project_id": 1,
+          "working_category_id": null,
+          "working_subcategory_id": null,
+          "name": "庶務作業",
+          "schedule_time": 0.0,
+          "description": "電話対応、予実入力、社内申請などの事務作業",
+          "sort_order": 1,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T09:13:48",
+          "created_function_name": "projects",
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T09:13:48",
+          "updated_function_name": "projects"
+        },
+        {
+          "id": 2,
+          "project_id": 2,
+          "working_category_id": null,
+          "working_subcategory_id": null,
+          "name": "クラウド整備",
+          "schedule_time": 0.0,
+          "description": "社内で使用するクラウドやマスタの整備作業",
+          "sort_order": 1,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T10:45:05",
+          "created_function_name": "projects",
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T10:45:05",
+          "updated_function_name": "projects"
+        },
+        {
+          "id": 3,
+          "project_id": 2,
+          "working_category_id": null,
+          "working_subcategory_id": null,
+          "name": "機器整備",
+          "schedule_time": 0.0,
+          "description": "社内で使用する機器の整備作業",
+          "sort_order": 2,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T10:45:05",
+          "created_function_name": "projects",
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T10:45:05",
+          "updated_function_name": "projects"
+        },
+        {
+          "id": 4,
+          "project_id": 2,
+          "working_category_id": null,
+          "working_subcategory_id": null,
+          "name": "資料整備",
+          "schedule_time": 0.0,
+          "description": "社内で使用する雛形やマニュアル等の整備作業",
+          "sort_order": 3,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T10:45:05",
+          "created_function_name": "projects",
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T10:45:05",
+          "updated_function_name": "projects"
+        },
+        {
+          "id": 5,
+          "project_id": 2,
+          "working_category_id": null,
+          "working_subcategory_id": null,
+          "name": "職場整備",
+          "schedule_time": 0.0,
+          "description": "職場の整理・整頓・清掃・買い出し等作業",
+          "sort_order": 4,
+          "created_user_id": 6,
+          "created_at": "2025-04-02T10:45:05",
+          "created_function_name": "projects",
+          "updated_user_id": 6,
+          "updated_at": "2025-04-02T10:45:05",
+          "updated_function_name": "projects"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "table": "sumtime.project_categories",
+  "columns": [
+    {
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": "nextval('project_categories_id_seq'::regclass)"
+    },
+    {
+      "column_name": "name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "graph_category_id",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "graph_color",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "column_name": "is_initial_show",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "column_name": "sort_order",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "column_name": "is_using",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "column_name": "created_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "created_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_user_id",
+      "data_type": "bigint",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_at",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "updated_function_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    }
+  ],
+  "sample_data": [
+    {
+      "id": 1,
+      "name": "請負",
+      "graph_category_id": 1,
+      "graph_color": "#006fbc",
+      "is_initial_show": false,
+      "sort_order": 1,
+      "is_using": true,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 8,
+      "updated_at": "2025-04-08T16:01:57",
+      "updated_function_name": "project-categories"
+    },
+    {
+      "id": 2,
+      "name": "準委任",
+      "graph_category_id": 1,
+      "graph_color": "#04af7a",
+      "is_initial_show": false,
+      "sort_order": 2,
+      "is_using": true,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 8,
+      "updated_at": "2025-04-08T16:02:01",
+      "updated_function_name": "project-categories"
+    },
+    {
+      "id": 3,
+      "name": "保守",
+      "graph_category_id": 1,
+      "graph_color": "#f5a200",
+      "is_initial_show": false,
+      "sort_order": 3,
+      "is_using": true,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 8,
+      "updated_at": "2025-04-08T16:02:06",
+      "updated_function_name": "project-categories"
+    },
+    {
+      "id": 4,
+      "name": "間接",
+      "graph_category_id": 1,
+      "graph_color": "#9a9a9a",
+      "is_initial_show": false,
+      "sort_order": 4,
+      "is_using": true,
+      "created_user_id": null,
+      "created_at": null,
+      "created_function_name": null,
+      "updated_user_id": 8,
+      "updated_at": "2025-04-08T16:02:10",
+      "updated_function_name": "project-categories"
+    }
+  ]
+}
