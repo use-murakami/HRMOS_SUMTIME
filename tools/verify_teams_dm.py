@@ -212,7 +212,7 @@ def create_or_get_chat(token: str, user_object_id: str, sp_id: str) -> str:
         "Content-Type": "application/json",
     }
     body = {
-        "chatType": "oneOnOne",
+        "chatType": "group",
         "members": [
             {
                 "@odata.type": "#microsoft.graph.aadUserConversationMember",
