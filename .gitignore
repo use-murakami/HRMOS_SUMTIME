@@ -23,3 +23,5 @@ Thumbs.db
 
 # GCP
 service-account-key.json
+office-pc-key.json
+*-key.json
