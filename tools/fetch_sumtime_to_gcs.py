@@ -71,19 +71,28 @@ def get_secret(client: secretmanager.SecretManagerServiceClient,
 def load_secrets(project_id: str) -> dict:
     print("\n[Step 1] Secret Manager から接続情報を取得...")
     client = secretmanager.SecretManagerServiceClient()
-    secrets = {}
-    secret_names = [
-        "sumtime-ssh-host",
-        "sumtime-ssh-user",
-        "sumtime-ssh-password",
-        "sumtime-db-host",
-        "sumtime-db-name",
-        "sumtime-db-user",
-        "sumtime-db-password",
-    ]
-    for name in secret_names:
-        secrets[name] = get_secret(client, project_id, name)
-        print(f"[Step 1]   {name}: 取得済み")
+
+    # sumtime-credentials は JSON 形式で1件に統合されている
+    secret_name = "sumtime-credentials"
+    raw = get_secret(client, project_id, secret_name)
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError as e:
+        raise ValueError(
+            f"シークレット '{secret_name}' がJSON形式ではありません: {e}"
+        ) from e
+
+    # 後方互換: 旧キー名の平坦なdictに展開して返す
+    secrets = {
+        "sumtime-ssh-host":     data["ssh_host"],
+        "sumtime-ssh-user":     data["ssh_user"],
+        "sumtime-ssh-password": data["ssh_password"],
+        "sumtime-db-host":      data["db_host"],
+        "sumtime-db-name":      data["db_name"],
+        "sumtime-db-user":      data["db_user"],
+        "sumtime-db-password":  data["db_password"],
+    }
+    print(f"[Step 1]   {secret_name}: 取得済み（7フィールド展開）")
     print("[Step 1] ✓ 全シークレット取得完了")
     return secrets
 
