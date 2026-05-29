@@ -90,3 +90,33 @@ class TestEnvOverride:
         import config
         importlib.reload(config)
         assert config.SENDER_EMAIL == "test@example.com"
+
+    def test_override_email_to_from_env(self, monkeypatch):
+        """環境変数でOVERRIDE_EMAIL_TOを上書きできること"""
+        monkeypatch.setenv("OVERRIDE_EMAIL_TO", "other@example.com")
+        import config
+        importlib.reload(config)
+        assert config.OVERRIDE_EMAIL_TO == "other@example.com"
+
+    def test_override_email_to_empty_disables_guard(self, monkeypatch):
+        """OVERRIDE_EMAIL_TOを空文字列にすると本番モードになること"""
+        monkeypatch.setenv("OVERRIDE_EMAIL_TO", "")
+        import config
+        importlib.reload(config)
+        assert config.OVERRIDE_EMAIL_TO == ""
+
+
+class TestSafetyGuard:
+    """安全ガード設定のテスト"""
+
+    def test_override_email_default_is_admin(self):
+        """デフォルトでOVERRIDE_EMAIL_TOが管理者アドレスであること（フェイルセーフ）"""
+        import config
+        importlib.reload(config)
+        assert config.OVERRIDE_EMAIL_TO == "y-murakami@use-eng.co.jp"
+
+    def test_override_email_is_truthy_by_default(self):
+        """デフォルトでOVERRIDE_EMAIL_TOが空でないこと（ガードが有効）"""
+        import config
+        importlib.reload(config)
+        assert bool(config.OVERRIDE_EMAIL_TO) is True

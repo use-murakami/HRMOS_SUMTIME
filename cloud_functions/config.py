@@ -39,3 +39,15 @@ ADMIN_EMAIL: str = os.environ.get("ADMIN_EMAIL", "y-murakami@use-eng.co.jp")
 
 # メール送信間隔（秒）: Graph API レート制限対策
 EMAIL_SEND_INTERVAL_SEC: float = float(os.environ.get("EMAIL_SEND_INTERVAL_SEC", "0.5"))
+
+# ─────────────────────────────────────────────
+# 安全ガード設定
+# ─────────────────────────────────────────────
+# メール送信先の強制上書き（開発・テスト中の誤送信防止）
+# 設定されている間は、個人通知メールを含む全メールをこのアドレスに転送する
+# 本番移行時は環境変数を空文字列（""）に設定して解除する
+#
+# ⚠️ デフォルトで管理者アドレスを設定しているため、
+#    環境変数 OVERRIDE_EMAIL_TO="" を明示的に指定しない限り
+#    社員へのメール送信は行われない（フェイルセーフ設計）
+OVERRIDE_EMAIL_TO: str = os.environ.get("OVERRIDE_EMAIL_TO", "y-murakami@use-eng.co.jp")

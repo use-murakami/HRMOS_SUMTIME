@@ -197,17 +197,32 @@ def run(request: flask.Request) -> tuple[flask.Response, int]:
         sender_email=config.SENDER_EMAIL,
     )
 
+    # 安全ガード: OVERRIDE_EMAIL_TO が設定されている間は全メールを転送
+    override_to = config.OVERRIDE_EMAIL_TO
+    if override_to:
+        logger.warning(
+            f"[安全ガード有効] OVERRIDE_EMAIL_TO={override_to!r} — "
+            f"全メールをこのアドレスに転送します。社員への直接送信は行いません。"
+        )
+    else:
+        logger.info("OVERRIDE_EMAIL_TO 未設定: 本番モードで各社員に送信します")
+
     send_errors = []
     if diff_results:
-        messages = [
-            EmailMessage(
-                to_address=emp.email,
+        messages = []
+        for emp in diff_results:
+            subject, body_html = build_personal_email(emp, period_start, period_end)
+            if override_to:
+                # 転送モード: 本来の宛先を件名に付加して管理者アドレスに送信
+                to_address = override_to
+                subject = f"[転送: {emp.email}宛] {subject}"
+            else:
+                to_address = emp.email
+            messages.append(EmailMessage(
+                to_address=to_address,
                 subject=subject,
                 body_html=body_html,
-            )
-            for emp in diff_results
-            for subject, body_html in [build_personal_email(emp, period_start, period_end)]
-        ]
+            ))
         failed = email_client.send_emails(messages)
         if failed:
             send_errors.append(f"個人メール送信失敗: {failed}")
@@ -250,7 +265,7 @@ def run(request: flask.Request) -> tuple[flask.Response, int]:
             total_employees=total_employees,
         )
         email_client.send_email(EmailMessage(
-            to_address=config.ADMIN_EMAIL,
+            to_address=override_to or config.ADMIN_EMAIL,
             subject=summary_subject,
             body_html=summary_body,
         ))
