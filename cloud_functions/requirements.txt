@@ -1,5 +1,6 @@
 functions-framework==3.*
 google-cloud-secret-manager
 google-cloud-storage
+google-cloud-firestore
 requests
 jpholiday
