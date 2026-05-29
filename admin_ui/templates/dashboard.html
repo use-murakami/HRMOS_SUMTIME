@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block title %}ダッシュボード{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>ダッシュボード</h1>
+  <p>突き合わせの実行状況と差異サマリー</p>
+</div>
+
+{% if testing_mode %}
+<div class="testing-banner">
+  <div class="testing-banner-icon">🔒</div>
+  <div>
+    <div class="testing-banner-title">テストモード有効</div>
+    <div class="testing-banner-body">
+      メール送信は管理者（{{ latest.admin_email if latest else 'y-murakami@use-eng.co.jp' }}）のみに制限されています。
+      本番移行時は環境変数 <code>TESTING_MODE=false</code> / <code>OVERRIDE_EMAIL_TO=</code> を設定してください。
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- サマリーカード -->
+<div class="grid-3">
+  <div class="card">
+    <div class="card-title">最終実行</div>
+    <div class="stat-value">{{ latest.executed_at[:10] if latest else '—' }}</div>
+    <div class="stat-label">{{ latest.executed_at[11:16] if latest else '' }} 実行</div>
+  </div>
+  <div class="card">
+    <div class="card-title">通知対象者数</div>
+    <div class="stat-value">{{ latest.notified_count if latest else '—' }}<span style="font-size:16px;color:#888;">名</span></div>
+    <div class="stat-label">全 {{ latest.total_employees if latest else '—' }} 名中</div>
+  </div>
+  <div class="card">
+    <div class="card-title">直近30日の差異率</div>
+    <div class="stat-value" id="avg-diff-rate">—</div>
+    <div class="stat-label">平均差異発生率</div>
+  </div>
+</div>
+
+<!-- グラフ -->
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title">差異率の推移</div>
+    <div style="height:200px;"><canvas id="chart-diff-rate"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-title">通知対象者数の推移</div>
+    <div style="height:200px;"><canvas id="chart-notified"></canvas></div>
+  </div>
+</div>
+
+<!-- 実行履歴 -->
+<div class="card">
+  <div class="card-title">実行履歴（直近10件）</div>
+  <table>
+    <thead>
+      <tr>
+        <th>実行日時</th>
+        <th>対象期間</th>
+        <th>通知</th>
+        <th>合計</th>
+        <th>差異率</th>
+        <th>エラー</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in recent_results %}
+      <tr>
+        <td>{{ r.executed_at[:16].replace('T', ' ') if r.executed_at else '—' }}</td>
+        <td style="font-size:12px;">{{ r.period_start if r.period_start else '—' }} 〜 {{ r.period_end if r.period_end else '—' }}</td>
+        <td><strong>{{ r.notified_count if r.notified_count is not none else '—' }}</strong> 名</td>
+        <td>{{ r.total_employees if r.total_employees is not none else '—' }} 名</td>
+        <td>
+          {% if r.total_employees and r.total_employees > 0 %}
+            {% set rate = (r.notified_count / r.total_employees * 100) | round(1) %}
+            <span class="badge {% if rate >= 30 %}badge-warn{% elif rate >= 10 %}badge-blue{% else %}badge-ok{% endif %}">
+              {{ rate }}%
+            </span>
+          {% else %}—{% endif %}
+        </td>
+        <td>
+          {% if r.errors and r.errors | length > 0 %}
+            <span class="badge badge-err">{{ r.errors | length }}件</span>
+          {% else %}
+            <span class="badge badge-ok">なし</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6" style="text-align:center;color:#999;padding:24px;">実行履歴がありません</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// 実行履歴データ（Jinja2 から渡す）
+const executions = {{ recent_results | tojson }};
+
+// ── 差異率グラフ ──────────────────────────────────────────────
+const diffRateLabels = executions.slice().reverse().map(r => r.executed_at ? r.executed_at.slice(5,10) : '');
+const diffRateData   = executions.slice().reverse().map(r =>
+  r.total_employees > 0 ? Math.round(r.notified_count / r.total_employees * 1000) / 10 : 0
+);
+
+new Chart(document.getElementById('chart-diff-rate'), {
+  type: 'line',
+  data: {
+    labels: diffRateLabels,
+    datasets: [{
+      label: '差異率（%）',
+      data: diffRateData,
+      borderColor: '#1a73e8',
+      backgroundColor: 'rgba(26,115,232,0.08)',
+      borderWidth: 2,
+      pointBackgroundColor: '#1a73e8',
+      pointRadius: 4,
+      fill: true,
+      tension: 0.3,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } } }
+  }
+});
+
+// ── 通知対象者数グラフ ────────────────────────────────────────
+const notifiedData = executions.slice().reverse().map(r => r.notified_count || 0);
+
+new Chart(document.getElementById('chart-notified'), {
+  type: 'bar',
+  data: {
+    labels: diffRateLabels,
+    datasets: [{
+      label: '通知対象者数',
+      data: notifiedData,
+      backgroundColor: 'rgba(52,168,83,0.7)',
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+  }
+});
+
+// ── 平均差異率を計算して表示 ──────────────────────────────────
+if (diffRateData.length > 0) {
+  const avg = (diffRateData.reduce((a, b) => a + b, 0) / diffRateData.length).toFixed(1);
+  document.getElementById('avg-diff-rate').textContent = avg + '%';
+}
+</script>
+{% endblock %}

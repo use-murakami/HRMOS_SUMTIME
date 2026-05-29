@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}設定{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>設定</h1>
+  <p>突き合わせの閾値や対象期間を設定します</p>
+</div>
+
+<div class="card">
+  <div class="card-title">突き合わせ設定</div>
+
+  <div class="form-group">
+    <label>差異通知の閾値（分）</label>
+    <input type="number" id="threshold-minutes" value="{{ settings.threshold_minutes }}" min="1" max="120" style="width:120px;">
+    <div style="font-size:12px;color:#888;margin-top:4px;">
+      この値以上の差異がある日を通知対象とします（現在: {{ settings.threshold_minutes }}分）
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>デフォルト遡り日数</label>
+    <input type="number" id="period-days" value="{{ settings.period_days }}" min="1" max="90" style="width:120px;">
+    <div style="font-size:12px;color:#888;margin-top:4px;">
+      即時実行・Schedulerのデフォルト対象期間（現在: {{ settings.period_days }}日）
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="saveSettings()" id="save-btn">保存</button>
+  <span id="save-result" style="margin-left:12px; font-size:13px;"></span>
+</div>
+
+<div class="card">
+  <div class="card-title">システム情報</div>
+  <table>
+    <tbody>
+      <tr><td style="width:200px;color:#888;">GCPプロジェクト</td><td>kintai-kosu-notification</td></tr>
+      <tr><td style="color:#888;">Cloud Functionsリージョン</td><td>asia-northeast1</td></tr>
+      <tr><td style="color:#888;">テストモード</td>
+          <td>{% if testing_mode %}<span class="badge badge-warn">🔒 有効</span>{% else %}<span class="badge badge-ok">無効（本番）</span>{% endif %}</td></tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function saveSettings() {
+  const btn = document.getElementById('save-btn');
+  const result = document.getElementById('save-result');
+  btn.disabled = true;
+  result.textContent = '保存中...';
+
+  try {
+    const resp = await fetch('/api/settings', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        threshold_minutes: parseInt(document.getElementById('threshold-minutes').value),
+        period_days:       parseInt(document.getElementById('period-days').value),
+      }),
+    });
+    if (resp.ok) {
+      result.textContent = '✅ 保存しました';
+      result.style.color = '#2e7d32';
+    } else {
+      const data = await resp.json();
+      result.textContent = '❌ ' + (data.error || 'エラー');
+      result.style.color = '#c62828';
+    }
+  } catch (e) {
+    result.textContent = '❌ 通信エラー: ' + e.message;
+    result.style.color = '#c62828';
+  } finally {
+    btn.disabled = false;
+    setTimeout(() => { result.textContent = ''; }, 4000);
+  }
+}
+</script>
+{% endblock %}

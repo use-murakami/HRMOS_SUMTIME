@@ -120,3 +120,30 @@ class TestSafetyGuard:
         import config
         importlib.reload(config)
         assert bool(config.OVERRIDE_EMAIL_TO) is True
+
+    def test_testing_mode_default_is_true(self):
+        """デフォルトでTESTING_MODEがTrueであること（テスト中UIロック有効）"""
+        import config
+        importlib.reload(config)
+        assert config.TESTING_MODE is True
+
+    def test_testing_mode_disabled_by_env_false(self, monkeypatch):
+        """環境変数 TESTING_MODE=false でFalseになること"""
+        monkeypatch.setenv("TESTING_MODE", "false")
+        import config
+        importlib.reload(config)
+        assert config.TESTING_MODE is False
+
+    def test_testing_mode_disabled_by_env_0(self, monkeypatch):
+        """環境変数 TESTING_MODE=0 でFalseになること"""
+        monkeypatch.setenv("TESTING_MODE", "0")
+        import config
+        importlib.reload(config)
+        assert config.TESTING_MODE is False
+
+    def test_testing_mode_enabled_by_env_true(self, monkeypatch):
+        """環境変数 TESTING_MODE=true でTrueになること"""
+        monkeypatch.setenv("TESTING_MODE", "true")
+        import config
+        importlib.reload(config)
+        assert config.TESTING_MODE is True

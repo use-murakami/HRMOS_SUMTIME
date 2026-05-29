@@ -1,0 +1,32 @@
+# Cloud Functions デプロイ除外ファイル
+# テストコード・開発用ファイルはデプロイパッケージに含めない
+
+# テストコード
+tests/
+conftest.py
+pytest.ini
+.pytest_cache/
+
+# 開発用依存パッケージ
+requirements-dev.txt
+
+# Pythonキャッシュ
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDEファイル
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 環境変数ファイル
+.env
+.env.*
+
+# その他
+*.md
+.git/

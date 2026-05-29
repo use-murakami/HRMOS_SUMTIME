@@ -508,10 +508,27 @@
       <p>社員ごとに差異通知の可否を設定できます</p>
     </div>
 
+    <!-- ⚠️ TESTINGモードバナー -->
+    <div id="testing-mode-banner" style="
+      background: #fff3cd; border: 1px solid #f0ad4e; border-radius:8px;
+      padding: 14px 18px; margin-bottom: 18px;
+      display: flex; align-items: flex-start; gap: 12px;
+    ">
+      <span style="font-size:22px; line-height:1;">🔒</span>
+      <div>
+        <div style="font-weight:700; color:#856404; margin-bottom:4px;">テストモード有効 — 通知設定変更はロックされています</div>
+        <div style="font-size:13px; color:#664d03; line-height:1.6;">
+          検証期間中は <strong>村上 勇治（y-murakami@use-eng.co.jp）</strong> のみ通知ONに設定できます。<br>
+          他の社員のトグルは操作できません。<br>
+          本番移行後は環境変数 <code style="background:#fde68a; padding:1px 5px; border-radius:3px;">TESTING_MODE=false</code> を設定してロックを解除してください。
+        </div>
+      </div>
+    </div>
+
     <div class="card">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
         <div class="card-title" style="margin-bottom:0;">社員一覧（19名）</div>
-        <div style="font-size:12px; color:#777;">通知ON: <strong style="color:#34a853;">17名</strong>　通知OFF: <strong style="color:#999;">2名</strong></div>
+        <div style="font-size:12px; color:#777;">通知ON: <strong style="color:#34a853;" id="on-count">1名</strong>　通知OFF: <strong style="color:#999;" id="off-count">18名</strong></div>
       </div>
 
       <div class="emp-filter">
@@ -528,53 +545,178 @@
           <tr>
             <th>氏名</th>
             <th>メールアドレス</th>
-            <th style="width:100px; text-align:center;">通知</th>
+            <th style="width:120px; text-align:center;">通知</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>山田 太郎</td><td>yamada@use-eng.co.jp</td>
-            <td style="text-align:center;"><label class="toggle-switch"><input type="checkbox" checked onchange="updateEmpStatus(this)"><span class="toggle-slider"></span></label></td>
+          <!-- 管理者（村上）= ON・変更可 -->
+          <tr class="emp-row emp-on">
+            <td><strong>村上 勇治</strong> <span style="font-size:11px; background:#1a73e8; color:#fff; border-radius:3px; padding:1px 6px; margin-left:4px;">管理者</span></td>
+            <td>y-murakami@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch">
+                <input type="checkbox" checked data-admin="true" onchange="updateEmpStatus(this)">
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
           </tr>
-          <tr>
-            <td>佐藤 花子</td><td>sato@use-eng.co.jp</td>
-            <td style="text-align:center;"><label class="toggle-switch"><input type="checkbox" checked onchange="updateEmpStatus(this)"><span class="toggle-slider"></span></label></td>
+          <!-- 一般社員（テストモード中はロック済み・OFF固定） -->
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">山田 太郎</td><td style="color:#aaa;">yamada@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
           </tr>
-          <tr>
-            <td>鈴木 一郎</td><td>suzuki@use-eng.co.jp</td>
-            <td style="text-align:center;"><label class="toggle-switch"><input type="checkbox" checked onchange="updateEmpStatus(this)"><span class="toggle-slider"></span></label></td>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">佐藤 花子</td><td style="color:#aaa;">sato@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
           </tr>
-          <tr>
-            <td>高橋 誠</td><td>takahashi@use-eng.co.jp</td>
-            <td style="text-align:center;"><label class="toggle-switch"><input type="checkbox" checked onchange="updateEmpStatus(this)"><span class="toggle-slider"></span></label></td>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">鈴木 一郎</td><td style="color:#aaa;">suzuki@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
           </tr>
-          <tr>
-            <td>中村 美咲</td><td>nakamura@use-eng.co.jp</td>
-            <td style="text-align:center;"><label class="toggle-switch"><input type="checkbox" checked onchange="updateEmpStatus(this)"><span class="toggle-slider"></span></label></td>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">高橋 誠</td><td style="color:#aaa;">takahashi@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
           </tr>
-          <tr style="background:#fafafa;">
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">中村 美咲</td><td style="color:#aaa;">nakamura@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
+          </tr>
+          <tr class="emp-row emp-off">
             <td style="color:#aaa;">田中 次郎</td><td style="color:#aaa;">tanaka@use-eng.co.jp</td>
-            <td style="text-align:center;"><label class="toggle-switch"><input type="checkbox" onchange="updateEmpStatus(this)"><span class="toggle-slider"></span></label></td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
           </tr>
-          <tr style="background:#fafafa;">
+          <tr class="emp-row emp-off">
             <td style="color:#aaa;">伊藤 三郎</td><td style="color:#aaa;">ito@use-eng.co.jp</td>
-            <td style="text-align:center;"><label class="toggle-switch"><input type="checkbox" onchange="updateEmpStatus(this)"><span class="toggle-slider"></span></label></td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
           </tr>
-          <tr>
-            <td>渡辺 あい</td><td>watanabe@use-eng.co.jp</td>
-            <td style="text-align:center;"><label class="toggle-switch"><input type="checkbox" checked onchange="updateEmpStatus(this)"><span class="toggle-slider"></span></label></td>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">渡辺 あい</td><td style="color:#aaa;">watanabe@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
           </tr>
-          <tr>
-            <td>小林 健</td><td>kobayashi@use-eng.co.jp</td>
-            <td style="text-align:center;"><label class="toggle-switch"><input type="checkbox" checked onchange="updateEmpStatus(this)"><span class="toggle-slider"></span></label></td>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">小林 健</td><td style="color:#aaa;">kobayashi@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
           </tr>
-          <tr>
-            <td>加藤 由美</td><td>kato@use-eng.co.jp</td>
-            <td style="text-align:center;"><label class="toggle-switch"><input type="checkbox" checked onchange="updateEmpStatus(this)"><span class="toggle-slider"></span></label></td>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">加藤 由美</td><td style="color:#aaa;">kato@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
+          </tr>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">松本 大輔</td><td style="color:#aaa;">matsumoto@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
+          </tr>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">井上 陽子</td><td style="color:#aaa;">inoue@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
+          </tr>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">木村 拓也</td><td style="color:#aaa;">kimura@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
+          </tr>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">林 直樹</td><td style="color:#aaa;">hayashi@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
+          </tr>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">清水 奈々</td><td style="color:#aaa;">shimizu@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
+          </tr>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">山口 浩二</td><td style="color:#aaa;">yamaguchi@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
+          </tr>
+          <tr class="emp-row emp-off">
+            <td style="color:#aaa;">森 千春</td><td style="color:#aaa;">mori@use-eng.co.jp</td>
+            <td style="text-align:center;">
+              <label class="toggle-switch" title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;">
+                <input type="checkbox" disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </td>
           </tr>
         </tbody>
       </table>
-      <div style="font-size:12px; color:#999; margin-top:10px; text-align:center;">… 他9名 （社員情報はHRMOSから自動同期）</div>
+      <div style="font-size:12px; color:#999; margin-top:10px; text-align:center;">社員情報はHRMOSから自動同期</div>
     </div>
   </div>
 
@@ -613,15 +755,28 @@
   });
 
   function updateEmpStatus(checkbox) {
-    const row = checkbox.closest('tr');
-    const remarkCell = row.cells[3];
-    if (checkbox.checked) {
-      row.style.background = '';
-      row.style.color = '';
-    } else {
-      row.style.background = '#fafafa';
-      row.style.color = '#aaa';
+    // テストモード中は管理者以外の操作をブロック
+    const TESTING_MODE = true; // 本番移行後は false に変更（または環境変数で制御）
+    if (TESTING_MODE && !checkbox.dataset.admin) {
+      checkbox.checked = !checkbox.checked; // 元に戻す
+      alert('テストモード中は管理者（村上 勇治）以外の通知設定を変更できません。\n本番移行後に TESTING_MODE=false を設定してロックを解除してください。');
+      return;
     }
+    const row = checkbox.closest('tr');
+    if (checkbox.checked) {
+      row.classList.remove('emp-off');
+      row.classList.add('emp-on');
+      row.querySelectorAll('td').forEach(td => { td.style.color = ''; });
+    } else {
+      row.classList.remove('emp-on');
+      row.classList.add('emp-off');
+      row.querySelectorAll('td').forEach(td => { td.style.color = '#aaa'; });
+    }
+    // 通知ON/OFF 件数を更新
+    const onCount  = document.querySelectorAll('#page-employees .emp-on').length;
+    const offCount = document.querySelectorAll('#page-employees .emp-off').length;
+    document.getElementById('on-count').textContent  = onCount  + '名';
+    document.getElementById('off-count').textContent = offCount + '名';
   }
 
   // ── グラフ初期化 ────────────────────────────────

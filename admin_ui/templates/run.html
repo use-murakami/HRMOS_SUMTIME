@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+{% block title %}即時実行{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>即時実行</h1>
+  <p>突き合わせを手動で実行します</p>
+</div>
+
+<div class="alert alert-info">
+  対象社員：通知対象者管理でONに設定された社員が対象となります
+</div>
+
+<div class="card">
+  <div class="card-title">実行設定</div>
+
+  <div class="form-group">
+    <label>対象期間</label>
+    <div style="display:flex; gap:16px; align-items:center; margin-bottom:8px;">
+      <label style="font-weight:normal;display:flex;align-items:center;gap:6px;">
+        <input type="radio" name="period" value="days" checked onchange="togglePeriodInput()"> 日数指定
+      </label>
+      <label style="font-weight:normal;display:flex;align-items:center;gap:6px;">
+        <input type="radio" name="period" value="month" onchange="togglePeriodInput()"> 月指定
+      </label>
+    </div>
+    <div id="input-days">
+      <input type="number" id="period-days" value="14" min="1" max="90" style="width:120px;"> 日前まで遡る
+    </div>
+    <div id="input-month" style="display:none;">
+      <input type="month" id="period-month" style="width:160px;">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>プレビューモード</label>
+    <div style="display:flex; gap:16px;">
+      <label style="font-weight:normal;display:flex;align-items:center;gap:6px;">
+        <input type="radio" name="preview" value="off" checked> OFF（実際にメール送信）
+      </label>
+      <label style="font-weight:normal;display:flex;align-items:center;gap:6px;">
+        <input type="radio" name="preview" value="on"> ON（メール送信なし・結果を画面表示のみ）
+      </label>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="executeRun()" id="run-btn">
+    ▶ 実行
+  </button>
+</div>
+
+<!-- 実行中インジケータ -->
+<div id="running-indicator" class="card" style="display:none; text-align:center; padding:32px;">
+  <div style="font-size:32px; margin-bottom:12px;">⏳</div>
+  <div style="font-weight:700; color:#1a73e8; margin-bottom:6px;">処理中...</div>
+  <div style="font-size:12px; color:#888;">HRMOS取得・突き合わせ・メール送信に1〜2分かかる場合があります</div>
+</div>
+
+<!-- 通常実行結果 -->
+<div id="run-result-sent" style="display:none;"></div>
+
+<!-- プレビュー結果 -->
+<div id="run-result-preview" style="display:none;"></div>
+
+<!-- エラー表示 -->
+<div id="run-result-error" style="display:none;"></div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function togglePeriodInput() {
+  const isDays = document.querySelector('input[name="period"]:checked').value === 'days';
+  document.getElementById('input-days').style.display  = isDays ? 'block' : 'none';
+  document.getElementById('input-month').style.display = isDays ? 'none'  : 'block';
+  // 月指定選択時はデフォルトを今月に
+  if (!isDays && !document.getElementById('period-month').value) {
+    const now = new Date();
+    document.getElementById('period-month').value =
+      now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+  }
+}
+
+async function executeRun() {
+  const btn = document.getElementById('run-btn');
+  const isPreview = document.querySelector('input[name="preview"]:checked').value === 'on';
+  const periodType = document.querySelector('input[name="period"]:checked').value;
+
+  // リクエストボディ組み立て
+  const body = {
+    mode: 'production',
+    preview: isPreview,
+  };
+  if (periodType === 'days') {
+    body.period_days = parseInt(document.getElementById('period-days').value);
+  } else {
+    body.period_month = document.getElementById('period-month').value;
+  }
+
+  // UI 更新
+  btn.disabled = true;
+  document.getElementById('running-indicator').style.display = 'block';
+  document.getElementById('run-result-sent').style.display    = 'none';
+  document.getElementById('run-result-preview').style.display = 'none';
+  document.getElementById('run-result-error').style.display   = 'none';
+
+  try {
+    const resp = await fetch('/api/run', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    document.getElementById('running-indicator').style.display = 'none';
+
+    if (!resp.ok) {
+      showError(data.error || JSON.stringify(data));
+      return;
+    }
+
+    if (isPreview) {
+      showPreviewResult(data);
+    } else {
+      showSentResult(data);
+    }
+  } catch (e) {
+    document.getElementById('running-indicator').style.display = 'none';
+    showError(e.message);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function showSentResult(data) {
+  const el = document.getElementById('run-result-sent');
+  el.innerHTML = `
+    <div class="card">
+      <div class="card-title">実行完了</div>
+      <div class="alert alert-success" style="margin-bottom:16px;">
+        ✅ 処理が完了しました
+      </div>
+      <div class="grid-3" style="margin-bottom:16px;">
+        <div><div style="font-size:22px;font-weight:700;">${data.notified_count ?? '—'}<span style="font-size:14px;color:#888;">名</span></div><div style="font-size:12px;color:#888;">通知送信</div></div>
+        <div><div style="font-size:22px;font-weight:700;">${data.total_employees ?? '—'}<span style="font-size:14px;color:#888;">名</span></div><div style="font-size:12px;color:#888;">対象社員</div></div>
+        <div><div style="font-size:22px;font-weight:700;">${data.errors && data.errors.length > 0 ? data.errors.length : 0}<span style="font-size:14px;color:#888;">件</span></div><div style="font-size:12px;color:#888;">エラー</div></div>
+      </div>
+      <div style="font-size:12px;color:#888;">期間: ${data.period_start} 〜 ${data.period_end}</div>
+      ${data.errors && data.errors.length > 0 ? `<div class="alert alert-danger" style="margin-top:12px;">${data.errors.join('<br>')}</div>` : ''}
+    </div>`;
+  el.style.display = 'block';
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function showPreviewResult(data) {
+  const diffs = data.diff_results || [];
+  const rows = diffs.map(emp => {
+    const days = emp.diff_days || [];
+    const dayRows = days.map(d => `
+      <tr>
+        <td style="padding:6px 10px;font-size:12px;">${d.date}</td>
+        <td style="padding:6px 10px;font-size:12px;text-align:right;">${formatMin(d.hrmos_minutes)}</td>
+        <td style="padding:6px 10px;font-size:12px;text-align:right;">${formatMin(d.sumtime_minutes)}</td>
+        <td style="padding:6px 10px;font-size:12px;text-align:right;${d.diff_minutes > 0 ? 'color:#e65100' : 'color:#1565c0'};">${d.diff_minutes > 0 ? '+' : ''}${formatMin(d.diff_minutes)}</td>
+        <td style="padding:6px 10px;">${d.is_anomaly ? '<span class="badge badge-warn">⚠ 異常値</span>' : ''}</td>
+      </tr>`).join('');
+    return `
+      <div style="margin-bottom:16px;border:1px solid #e8eaed;border-radius:8px;overflow:hidden;">
+        <div style="background:#f8f9fa;padding:10px 14px;font-weight:700;font-size:13px;display:flex;justify-content:space-between;">
+          <span>${emp.display_name || emp.email} <span style="font-weight:normal;color:#888;font-size:12px;">${emp.email}</span></span>
+          <span style="color:#e65100;">${emp.diff_days_count}日 差異あり</span>
+        </div>
+        <table style="width:100%;border-collapse:collapse;">
+          <thead><tr style="background:#fafafa;">
+            <th style="padding:6px 10px;font-size:11px;text-align:left;">日付</th>
+            <th style="padding:6px 10px;font-size:11px;text-align:right;">HRMOS</th>
+            <th style="padding:6px 10px;font-size:11px;text-align:right;">SUMTIME</th>
+            <th style="padding:6px 10px;font-size:11px;text-align:right;">差異</th>
+            <th style="padding:6px 10px;font-size:11px;"></th>
+          </tr></thead>
+          <tbody>${dayRows}</tbody>
+        </table>
+      </div>`;
+  }).join('');
+
+  const el = document.getElementById('run-result-preview');
+  el.innerHTML = `
+    <div class="card">
+      <div class="card-title">プレビュー結果（メール送信なし）</div>
+      <div class="alert alert-info" style="margin-bottom:16px;">
+        期間: ${data.period_start} 〜 ${data.period_end} ／
+        対象: ${data.total_employees}名 ／ 差異あり: <strong>${data.notified_count}名</strong>
+        <span style="margin-left:8px;font-size:11px;color:#888;">※ プレビューは通知設定に関わらず全社員を表示</span>
+      </div>
+      ${diffs.length === 0
+        ? '<div style="text-align:center;color:#888;padding:24px;">差異のある社員はいませんでした</div>'
+        : rows}
+    </div>`;
+  el.style.display = 'block';
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function showError(msg) {
+  const el = document.getElementById('run-result-error');
+  el.innerHTML = `<div class="card"><div class="alert alert-danger">❌ エラー: ${msg}</div></div>`;
+  el.style.display = 'block';
+}
+
+function formatMin(minutes) {
+  if (minutes == null) return '—';
+  const sign = minutes < 0 ? '-' : '';
+  const abs = Math.abs(minutes);
+  const h = Math.floor(abs / 60);
+  const m = abs % 60;
+  return h > 0 ? `${sign}${h}時間${m > 0 ? m + '分' : ''}` : `${sign}${m}分`;
+}
+</script>
+{% endblock %}

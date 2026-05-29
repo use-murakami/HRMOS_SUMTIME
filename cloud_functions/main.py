@@ -159,13 +159,17 @@ def run(request: flask.Request) -> tuple[flask.Response, int]:
                          if any(u.user_id == o.user_id for u in hrmos_users)]
         sumtime_data  = {k: v for k, v in sumtime_data.items() if k == target_email}
 
-    # 除外社員を除去
-    if excluded_emails:
+    # 除外社員を除去（プレビューモードでは全社員を表示するためスキップ）
+    if excluded_emails and not is_preview:
         hrmos_users   = [u for u in hrmos_users if u.email not in excluded_emails]
         hrmos_outputs = [o for o in hrmos_outputs
                          if any(u.user_id == o.user_id for u in hrmos_users)]
         sumtime_data  = {k: v for k, v in sumtime_data.items()
                          if k not in excluded_emails}
+    elif excluded_emails and is_preview:
+        logger.info(
+            f"Preview mode: 除外社員フィルタをスキップ（{len(excluded_emails)}名の除外設定を無視して全員表示）"
+        )
 
     diff_results = reconcile(
         hrmos_users=hrmos_users,

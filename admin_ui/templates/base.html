@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}勤怠・工数管理{% endblock %} — 管理画面</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Hiragino Sans", "Meiryo", sans-serif; font-size: 14px; color: #333; background: #f5f7fa; display: flex; min-height: 100vh; }
+
+    /* サイドバー */
+    .sidebar { width: 200px; background: #1a1a2e; color: #ccc; display: flex; flex-direction: column; flex-shrink: 0; }
+    .sidebar-header { padding: 20px 16px 16px; border-bottom: 1px solid #2a2a4a; }
+    .sidebar-header h2 { font-size: 13px; color: #fff; line-height: 1.4; }
+    .sidebar-header p { font-size: 11px; color: #888; margin-top: 4px; }
+    .sidebar nav { padding: 8px 0; }
+    .sidebar a { display: flex; align-items: center; gap: 8px; padding: 10px 16px; color: #aaa; text-decoration: none; font-size: 13px; transition: background 0.15s; }
+    .sidebar a:hover { background: #2a2a4a; color: #fff; }
+    .sidebar a.active { background: #1a73e8; color: #fff; }
+    .section-label { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 0.08em; padding: 12px 16px 4px; }
+
+    /* メインコンテンツ */
+    .main { flex: 1; overflow-y: auto; padding: 24px; }
+    .page-header { margin-bottom: 24px; }
+    .page-header h1 { font-size: 22px; color: #1a1a2e; font-weight: 700; }
+    .page-header p { color: #777; margin-top: 4px; font-size: 13px; }
+
+    /* カード */
+    .card { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.07); margin-bottom: 20px; }
+    .card-title { font-size: 13px; font-weight: 700; color: #444; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* テーブル */
+    table { width: 100%; border-collapse: collapse; }
+    th { background: #f8f9fa; font-size: 12px; color: #666; font-weight: 600; padding: 10px 12px; text-align: left; border-bottom: 2px solid #e8eaed; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; font-size: 13px; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafafa; }
+
+    /* バッジ */
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+    .badge-ok   { background: #e8f5e9; color: #2e7d32; }
+    .badge-warn { background: #fff3e0; color: #e65100; }
+    .badge-err  { background: #ffebee; color: #c62828; }
+    .badge-blue { background: #e3f2fd; color: #1565c0; }
+
+    /* トグルスイッチ */
+    .toggle-switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider { position: absolute; cursor: pointer; inset: 0; background: #ccc; border-radius: 24px; transition: 0.2s; }
+    .toggle-slider::before { content: ""; position: absolute; width: 18px; height: 18px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: 0.2s; }
+    .toggle-switch input:checked + .toggle-slider { background: #34a853; }
+    .toggle-switch input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+    /* フォーム */
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 600; color: #555; margin-bottom: 6px; }
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="email"],
+    .form-group select { width: 100%; padding: 8px 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: #1a73e8; box-shadow: 0 0 0 2px rgba(26,115,232,0.12); }
+
+    /* ボタン */
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; transition: opacity 0.15s; }
+    .btn:hover { opacity: 0.88; }
+    .btn-primary  { background: #1a73e8; color: #fff; }
+    .btn-success  { background: #34a853; color: #fff; }
+    .btn-warning  { background: #f9a825; color: #fff; }
+    .btn-danger   { background: #ea4335; color: #fff; }
+    .btn-outline  { background: #fff; color: #1a73e8; border: 1px solid #1a73e8; }
+    .btn-sm { padding: 5px 12px; font-size: 12px; }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    /* アラート */
+    .alert { padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 13px; }
+    .alert-info    { background: #e3f2fd; color: #1565c0; border-left: 4px solid #1a73e8; }
+    .alert-warning { background: #fff3cd; color: #856404; border-left: 4px solid #f0ad4e; }
+    .alert-success { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #34a853; }
+    .alert-danger  { background: #ffebee; color: #c62828; border-left: 4px solid #ea4335; }
+
+    /* グリッド */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .stat-value { font-size: 28px; font-weight: 700; color: #1a1a2e; }
+    .stat-label { font-size: 12px; color: #888; margin-top: 4px; }
+
+    /* 検索フィルタ */
+    .emp-filter { display: flex; gap: 10px; margin-bottom: 14px; }
+    .emp-filter input, .emp-filter select { padding: 7px 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; }
+    .emp-filter input { flex: 1; }
+
+    /* TESTINGモードバナー */
+    .testing-banner { background: #fff3cd; border: 1px solid #f0ad4e; border-radius: 8px; padding: 14px 18px; margin-bottom: 18px; display: flex; align-items: flex-start; gap: 12px; }
+    .testing-banner-icon { font-size: 22px; line-height: 1; }
+    .testing-banner-title { font-weight: 700; color: #856404; margin-bottom: 4px; }
+    .testing-banner-body { font-size: 13px; color: #664d03; line-height: 1.6; }
+    .testing-banner-body code { background: #fde68a; padding: 1px 5px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<!-- サイドバー -->
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h2>勤怠・工数<br>突き合わせシステム</h2>
+    <p>管理画面</p>
+  </div>
+  <nav>
+    <div class="section-label">メニュー</div>
+    <a href="{{ url_for('dashboard') }}" {% if request.endpoint == 'dashboard' %}class="active"{% endif %}>📊 ダッシュボード</a>
+    <a href="{{ url_for('run_page') }}" {% if request.endpoint == 'run_page' %}class="active"{% endif %}>▶ 即時実行</a>
+    <div class="section-label">管理</div>
+    <a href="{{ url_for('settings_page') }}" {% if request.endpoint == 'settings_page' %}class="active"{% endif %}>⚙ 設定</a>
+    <a href="{{ url_for('employees_page') }}" {% if request.endpoint == 'employees_page' %}class="active"{% endif %}>👥 通知対象者管理</a>
+  </nav>
+</div>
+
+<!-- メインコンテンツ -->
+<div class="main">
+  {% block content %}{% endblock %}
+</div>
+
+{% block scripts %}{% endblock %}
+</body>
+</html>

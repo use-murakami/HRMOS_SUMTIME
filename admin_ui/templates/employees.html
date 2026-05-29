@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% block title %}通知対象者管理{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>通知対象者管理</h1>
+  <p>社員ごとに差異通知の可否を設定できます</p>
+</div>
+
+{% if testing_mode %}
+<div class="testing-banner">
+  <div class="testing-banner-icon">🔒</div>
+  <div>
+    <div class="testing-banner-title">テストモード有効 — 通知設定変更はロックされています</div>
+    <div class="testing-banner-body">
+      検証期間中は <strong>{{ admin_email }}</strong> のみ通知ONに設定できます。<br>
+      他の社員のトグルは操作できません。<br>
+      本番移行後は環境変数 <code>TESTING_MODE=false</code> を設定してロックを解除してください。
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="card">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+    <div class="card-title" style="margin-bottom:0;">社員一覧</div>
+    <div style="font-size:12px; color:#777;">
+      通知ON: <strong style="color:#34a853;" id="on-count">{{ on_count }}名</strong>
+      通知OFF: <strong style="color:#999;" id="off-count">{{ off_count }}名</strong>
+    </div>
+  </div>
+
+  <div class="emp-filter">
+    <input type="text" id="search-input" placeholder="🔍 氏名・メールで検索" oninput="filterTable()">
+    <select id="status-filter" onchange="filterTable()">
+      <option value="">すべて表示</option>
+      <option value="on">通知ON のみ</option>
+      <option value="off">通知OFF のみ</option>
+    </select>
+  </div>
+
+  <table id="emp-table">
+    <thead>
+      <tr>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th style="width:120px; text-align:center;">通知</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for emp in employees %}
+      <tr class="emp-row {{ 'emp-on' if emp.notify else 'emp-off' }}"
+          data-email="{{ emp.email }}"
+          data-name="{{ emp.name }}"
+          {% if not emp.notify %}style="background:#fafafa;"{% endif %}>
+        <td {% if not emp.notify %}style="color:#aaa;"{% endif %}>{{ emp.name }}</td>
+        <td {% if not emp.notify %}style="color:#aaa;"{% endif %}>{{ emp.email }}</td>
+        <td style="text-align:center;">
+          {% set is_admin = (emp.email == admin_email) %}
+          {% set locked = testing_mode and not is_admin %}
+          <label class="toggle-switch"
+                 {% if locked %}title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;"{% endif %}>
+            <input type="checkbox"
+                   {{ 'checked' if emp.notify else '' }}
+                   {{ 'disabled' if locked else '' }}
+                   data-email="{{ emp.email }}"
+                   onchange="updateNotify(this)">
+            <span class="toggle-slider"></span>
+          </label>
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="3" style="text-align:center; color:#999; padding:32px;">
+          社員データがありません<br>
+          <span style="font-size:12px;">HRMOS から社員一覧が取得されると表示されます</span>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div style="font-size:12px; color:#999; margin-top:10px; text-align:center;">
+    社員情報は HRMOS から自動同期されます
+  </div>
+</div>
+
+<!-- 操作結果トースト -->
+<div id="toast" style="
+  position:fixed; bottom:24px; right:24px;
+  background:#333; color:#fff; padding:10px 18px; border-radius:8px;
+  font-size:13px; display:none; z-index:9999;
+"></div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const TESTING_MODE = {{ 'true' if testing_mode else 'false' }};
+const ADMIN_EMAIL  = {{ admin_email | tojson }};
+
+async function updateNotify(checkbox) {
+  const email = checkbox.dataset.email;
+  const notify = checkbox.checked;
+
+  // テストモードガード（フロントエンド側）
+  if (TESTING_MODE && email !== ADMIN_EMAIL) {
+    checkbox.checked = !notify; // 元に戻す
+    showToast('テストモード中は管理者以外の設定を変更できません', 'error');
+    return;
+  }
+
+  try {
+    const resp = await fetch(`/api/employees/${encodeURIComponent(email)}/notify`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ notify }),
+    });
+    const data = await resp.json();
+
+    if (!resp.ok) {
+      checkbox.checked = !notify;
+      showToast(data.error || 'エラーが発生しました', 'error');
+      return;
+    }
+
+    // 行のスタイル更新
+    const row = checkbox.closest('tr');
+    if (notify) {
+      row.classList.remove('emp-off'); row.classList.add('emp-on');
+      row.style.background = '';
+      row.querySelectorAll('td').forEach(td => { td.style.color = ''; });
+    } else {
+      row.classList.remove('emp-on'); row.classList.add('emp-off');
+      row.style.background = '#fafafa';
+      row.querySelectorAll('td').forEach(td => { td.style.color = '#aaa'; });
+    }
+    updateCounts();
+    showToast(`${email} の通知を${notify ? 'ON' : 'OFF'}にしました`, 'success');
+  } catch (e) {
+    checkbox.checked = !notify;
+    showToast('通信エラー: ' + e.message, 'error');
+  }
+}
+
+function updateCounts() {
+  const onCount  = document.querySelectorAll('.emp-on').length;
+  const offCount = document.querySelectorAll('.emp-off').length;
+  document.getElementById('on-count').textContent  = onCount  + '名';
+  document.getElementById('off-count').textContent = offCount + '名';
+}
+
+function filterTable() {
+  const keyword = document.getElementById('search-input').value.toLowerCase();
+  const status  = document.getElementById('status-filter').value;
+
+  document.querySelectorAll('#emp-table .emp-row').forEach(row => {
+    const email  = row.dataset.email.toLowerCase();
+    const name   = row.dataset.name.toLowerCase();
+    const isOn   = row.classList.contains('emp-on');
+
+    const matchKeyword = !keyword || email.includes(keyword) || name.includes(keyword);
+    const matchStatus  = !status
+      || (status === 'on' && isOn)
+      || (status === 'off' && !isOn);
+
+    row.style.display = (matchKeyword && matchStatus) ? '' : 'none';
+  });
+}
+
+function showToast(msg, type) {
+  const toast = document.getElementById('toast');
+  toast.textContent = (type === 'error' ? '❌ ' : '✅ ') + msg;
+  toast.style.background = type === 'error' ? '#c62828' : '#2e7d32';
+  toast.style.display = 'block';
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => { toast.style.display = 'none'; }, 3000);
+}
+</script>
+{% endblock %}

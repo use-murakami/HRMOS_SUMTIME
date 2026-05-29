@@ -51,3 +51,12 @@ EMAIL_SEND_INTERVAL_SEC: float = float(os.environ.get("EMAIL_SEND_INTERVAL_SEC",
 #    環境変数 OVERRIDE_EMAIL_TO="" を明示的に指定しない限り
 #    社員へのメール送信は行われない（フェイルセーフ設計）
 OVERRIDE_EMAIL_TO: str = os.environ.get("OVERRIDE_EMAIL_TO", "y-murakami@use-eng.co.jp")
+
+# テストモードフラグ（管理UIの通知設定変更をロック）
+# True（デフォルト）: 管理者以外の通知設定をUIから変更不可にする
+# False: 全社員の通知設定を自由に変更可能（本番移行後に環境変数で解除）
+#
+# ⚠️ OVERRIDE_EMAIL_TO と組み合わせることで二重の安全ガードを実現:
+#    - TESTING_MODE=True : UIから誤って通知ONにできない
+#    - OVERRIDE_EMAIL_TO 設定済み : 万一ONになっても管理者宛に転送
+TESTING_MODE: bool = os.environ.get("TESTING_MODE", "true").lower() not in ("false", "0", "")
