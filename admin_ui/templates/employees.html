@@ -61,7 +61,7 @@
           <label class="toggle-switch"
                  {% if locked %}title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;"{% endif %}>
             <input type="checkbox"
-                   {{ 'checked' if emp.notify else '' }}
+                   {{ 'checked' if (emp.notify and not locked) else '' }}
                    {{ 'disabled' if locked else '' }}
                    data-email="{{ emp.email }}"
                    onchange="updateNotify(this)">
