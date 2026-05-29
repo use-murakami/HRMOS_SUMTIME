@@ -212,12 +212,8 @@ def run(request: flask.Request) -> tuple[flask.Response, int]:
         messages = []
         for emp in diff_results:
             subject, body_html = build_personal_email(emp, period_start, period_end)
-            if override_to:
-                # 転送モード: 本来の宛先を件名に付加して管理者アドレスに送信
-                to_address = override_to
-                subject = f"[転送: {emp.email}宛] {subject}"
-            else:
-                to_address = emp.email
+            # 安全ガード: override_to が設定されている場合は送信先を置き換え
+            to_address = override_to if override_to else emp.email
             messages.append(EmailMessage(
                 to_address=to_address,
                 subject=subject,
