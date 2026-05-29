@@ -94,33 +94,42 @@ create_or_update_job() {
   echo ""
 }
 
-# ── ジョブ1: 週次定期実行（毎週月曜 9:00） ──────────────────
-echo "[2/4] 週次定期実行ジョブを登録中..."
+# ── ジョブ1: 週次定期実行（毎週月曜 9:00・一時停止で登録） ──
+echo "[2/4] 週次定期実行ジョブを登録中（一時停止状態）..."
 create_or_update_job \
   "kintai-weekly-production" \
   "0 9 * * 1" \
   '{"mode":"production"}' \
   "勤怠・工数突き合わせ 週次定期実行（毎週月曜9:00）"
 
-# ── ジョブ2: 月次確認実行（毎月1日 9:30） ───────────────────
-echo "[3/4] 月次確認実行ジョブを登録中..."
-# 先月の年月を動的に設定する必要があるため、production + period_days=31 で代用
-# ※ 月指定は管理UIからの手動実行で対応
+gcloud scheduler jobs pause "kintai-weekly-production" \
+  --project="${PROJECT_ID}" \
+  --location="${REGION}"
+echo "  ✓ kintai-weekly-production を一時停止状態に設定"
+echo ""
+
+# ── ジョブ2: 月次確認実行（毎月1日 9:30・一時停止で登録） ───
+echo "[3/4] 月次確認実行ジョブを登録中（一時停止状態）..."
 create_or_update_job \
   "kintai-monthly-check" \
   "30 9 1 * *" \
   '{"mode":"production","period_days":31}' \
   "勤怠・工数突き合わせ 月次確認実行（毎月1日9:30）"
 
-# ── ジョブ3: 疎通確認用（手動トリガー専用・無効状態で作成） ─
-echo "[4/4] 疎通確認用ジョブを登録中（無効状態）..."
+gcloud scheduler jobs pause "kintai-monthly-check" \
+  --project="${PROJECT_ID}" \
+  --location="${REGION}"
+echo "  ✓ kintai-monthly-check を一時停止状態に設定"
+echo ""
+
+# ── ジョブ3: 疎通確認用（手動トリガー専用・一時停止で登録） ─
+echo "[4/4] 疎通確認用ジョブを登録中（一時停止状態）..."
 create_or_update_job \
   "kintai-test-trigger" \
   "0 12 31 12 *" \
   "{\"mode\":\"test\",\"target_email\":\"y-murakami@use-eng.co.jp\",\"period_days\":7,\"preview\":true}" \
   "疎通確認用（手動トリガー専用。通常は無効）"
 
-# 疎通確認ジョブは無効化しておく
 gcloud scheduler jobs pause "kintai-test-trigger" \
   --project="${PROJECT_ID}" \
   --location="${REGION}"
@@ -132,13 +141,12 @@ echo "======================================================"
 echo "  Cloud Scheduler セットアップ完了"
 echo "======================================================"
 echo ""
-echo "  登録済みジョブ一覧:"
+echo "  登録済みジョブ一覧（全て PAUSED 状態）:"
 gcloud scheduler jobs list \
   --project="${PROJECT_ID}" \
   --location="${REGION}" \
   --format="table(name,schedule,state,lastAttemptTime)"
 echo ""
-echo "  ⚠️  注意:"
-echo "    - 初回テスト時は管理UIまたは以下コマンドで手動実行してください:"
-echo "    gcloud scheduler jobs run kintai-weekly-production \\"
+echo "  本番運用開始時は以下で有効化してください:"
+echo "    gcloud scheduler jobs resume kintai-weekly-production \\"
 echo "      --project=${PROJECT_ID} --location=${REGION}"
