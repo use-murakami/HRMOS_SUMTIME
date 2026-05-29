@@ -46,17 +46,17 @@ def require_auth(f):
         auth = request.authorization
         if not auth:
             return Response(
-                "認証が必要です",
+                "Authentication required",
                 401,
-                {"WWW-Authenticate": 'Basic realm="管理UI"'},
+                {"WWW-Authenticate": 'Basic realm="Admin UI"'},
             )
         expected_user = config.ADMIN_UI_USER
         expected_pass = _get_admin_password()
         if auth.username != expected_user or auth.password != expected_pass:
             return Response(
-                "認証情報が正しくありません",
+                "Invalid credentials",
                 401,
-                {"WWW-Authenticate": 'Basic realm="管理UI"'},
+                {"WWW-Authenticate": 'Basic realm="Admin UI"'},
             )
         return f(*args, **kwargs)
     return decorated
