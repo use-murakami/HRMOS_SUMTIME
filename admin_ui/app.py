@@ -298,7 +298,7 @@ def _load_employees_with_status(db: firestore.Client) -> list[dict]:
             for email in excluded_emails
         ]
 
-    # 通知ON/OFF を付与してソート（管理者を先頭に）
+    # 通知ON/OFF を付与してソート（管理者を先頭、残りは社員番号順）
     employees = []
     for u in hrmos_users:
         email = u["email"]
@@ -307,10 +307,11 @@ def _load_employees_with_status(db: firestore.Client) -> list[dict]:
             "name":         u["display_name"] or email.split("@")[0],
             "notify":       email not in excluded_emails,
             "is_admin":     email == config.ADMIN_EMAIL,
+            "employee_id":  u.get("employee_id", ""),
         })
 
-    # 管理者を先頭、残りは名前順
-    employees.sort(key=lambda e: (not e["is_admin"], e["name"]))
+    # 管理者を先頭、残りは社員番号順
+    employees.sort(key=lambda e: (not e["is_admin"], e["employee_id"]))
     return employees
 
 

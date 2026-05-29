@@ -43,6 +43,7 @@ def get_hrmos_users(secret_key: str) -> list[dict]:
                     "user_id":      u["id"],
                     "email":        email,
                     "display_name": f"{u.get('last_name', '')} {u.get('first_name', '')}".strip(),
+                    "employee_id":  u.get("number", ""),
                 })
         if len(data) < 100:
             break
