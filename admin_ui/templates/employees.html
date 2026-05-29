@@ -56,7 +56,7 @@
         <td {% if not emp.notify %}style="color:#aaa;"{% endif %}>{{ emp.name }}</td>
         <td {% if not emp.notify %}style="color:#aaa;"{% endif %}>{{ emp.email }}</td>
         <td style="text-align:center;">
-          {% set is_admin = (emp.email == admin_email) %}
+          {% set is_admin = emp.is_admin %}
           {% set locked = testing_mode and not is_admin %}
           <label class="toggle-switch"
                  {% if locked %}title="テストモード中は変更できません" style="opacity:0.45; cursor:not-allowed;"{% endif %}>

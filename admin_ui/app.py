@@ -19,6 +19,7 @@ from google.cloud import firestore
 
 import config
 from utils.secret_manager import get_secret
+from utils.hrmos_client import get_hrmos_users
 
 app = Flask(__name__)
 
@@ -274,25 +275,42 @@ def _load_recent_executions(db: firestore.Client, limit: int = 10) -> list[dict]
 
 def _load_employees_with_status(db: firestore.Client) -> list[dict]:
     """
-    Firestore の excluded_employees コレクションを参照して社員一覧＋通知状態を返す。
-    HRMOSから取得した社員リストと突き合わせる（Phase 7で実装）。
-    現時点では Firestore の excluded_employees のみを参照。
+    HRMOS API から社員一覧を取得し、Firestore の excluded_employees と
+    突き合わせて通知ON/OFFを付けて返す。
     """
+    # excluded_emails: Firestore に存在する = 通知OFF
     try:
         excluded_docs = db.collection("excluded_employees").stream()
         excluded_emails = {doc.id for doc in excluded_docs}
     except Exception:
         excluded_emails = set()
 
-    # TODO: Phase 7 で HRMOS API から社員一覧を取得してマージ
-    # 現時点では excluded_employees に登録された社員のみ表示
+    # HRMOS から社員一覧取得
+    try:
+        import json
+        raw = get_secret(config.GCP_PROJECT_ID, "hrmos-credentials")
+        hrmos_secret_key = json.loads(raw)["secret_key"]
+        hrmos_users = get_hrmos_users(hrmos_secret_key)
+    except Exception as e:
+        # HRMOS 取得失敗時は excluded_employees のみを表示
+        hrmos_users = [
+            {"email": email, "display_name": email.split("@")[0], "user_id": None}
+            for email in excluded_emails
+        ]
+
+    # 通知ON/OFF を付与してソート（管理者を先頭に）
     employees = []
-    for email in excluded_emails:
+    for u in hrmos_users:
+        email = u["email"]
         employees.append({
-            "email":  email,
-            "name":   email.split("@")[0],  # 仮表示
-            "notify": False,
+            "email":        email,
+            "name":         u["display_name"] or email.split("@")[0],
+            "notify":       email not in excluded_emails,
+            "is_admin":     email == config.ADMIN_EMAIL,
         })
+
+    # 管理者を先頭、残りは名前順
+    employees.sort(key=lambda e: (not e["is_admin"], e["name"]))
     return employees
 
 
