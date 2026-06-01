@@ -55,6 +55,7 @@ class EmployeeDiff:
     diff_days: list = field(default_factory=list)  # list[DayDiff]
     period_start: date = date.today()
     period_end: date = date.today()
+    employee_id: str = ""  # 社員番号（ソート用）
 
 
 # ─────────────────────────────────────────────
@@ -180,6 +181,7 @@ def reconcile(
                 diff_days=diff_days,
                 period_start=period_start,
                 period_end=period_end,
+                employee_id=user.employee_id if user else "",
             ))
 
     logger.info(

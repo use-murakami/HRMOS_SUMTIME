@@ -152,7 +152,13 @@ function showSentResult(data) {
 }
 
 function showPreviewResult(data) {
-  const diffs = data.diff_results || [];
+  const ADMIN_EMAIL = {{ config.ADMIN_EMAIL | tojson }} || 'y-murakami@use-eng.co.jp';
+  // 管理者を先頭、残りは社員番号順（通知対象者管理と同じ並び）
+  const diffs = (data.diff_results || []).sort((a, b) => {
+    if (a.email === ADMIN_EMAIL) return -1;
+    if (b.email === ADMIN_EMAIL) return 1;
+    return (a.employee_id || '').localeCompare(b.employee_id || '');
+  });
   const rows = diffs.map(emp => {
     const days = emp.diff_days || [];
     const dayRows = days.map(d => `

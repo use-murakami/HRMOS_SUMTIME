@@ -105,6 +105,7 @@ def run_page():
     return render_template(
         "run.html",
         testing_mode=config.TESTING_MODE,
+        config=config,
     )
 
 

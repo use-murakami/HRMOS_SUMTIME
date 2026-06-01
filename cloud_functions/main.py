@@ -421,6 +421,7 @@ def _build_preview_response(
             {
                 "email":           emp.email,
                 "display_name":    emp.display_name,
+                "employee_id":     emp.employee_id,
                 "diff_days_count": len(emp.diff_days),
                 "diff_days": [
                     {
