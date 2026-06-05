@@ -44,6 +44,23 @@
     </div>
   </div>
 
+  {% if testing_mode %}
+  <div class="form-group">
+    <label>対象範囲（テストモード）</label>
+    <div style="display:flex; gap:16px;">
+      <label style="font-weight:normal;display:flex;align-items:center;gap:6px;">
+        <input type="radio" name="scope" value="admin" checked> 管理者のみ
+      </label>
+      <label style="font-weight:normal;display:flex;align-items:center;gap:6px;">
+        <input type="radio" name="scope" value="all"> 全員
+      </label>
+    </div>
+    <div style="font-size:12px; color:#888; margin-top:4px;">
+      「管理者のみ」を選ぶと、突き合わせ・結果出力を管理者1名に限定します
+    </div>
+  </div>
+  {% endif %}
+
   <button class="btn btn-primary" onclick="executeRun()" id="run-btn">
     ▶ 実行
   </button>
@@ -95,6 +112,12 @@ async function executeRun() {
     body.period_days = parseInt(document.getElementById('period-days').value);
   } else {
     body.period_month = document.getElementById('period-month').value;
+  }
+
+  // テストモード時の対象範囲（「管理者のみ」が選択されていれば admin_only を送信）
+  const scopeEl = document.querySelector('input[name="scope"]:checked');
+  if (scopeEl && scopeEl.value === 'admin') {
+    body.admin_only = true;
   }
 
   // UI 更新

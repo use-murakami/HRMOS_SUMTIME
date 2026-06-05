@@ -145,6 +145,13 @@ def settings_page():
 def api_run():
     """Cloud Functions を呼び出して突き合わせを実行する"""
     body = request.get_json(silent=True) or {}
+
+    # テストモード時の「管理者のみ」: mode=test + 管理者アドレスをサーバ側で注入
+    # （対象アドレスはクライアントから任意指定させず、必ず config.ADMIN_EMAIL を使う）
+    if body.pop("admin_only", False):
+        body["mode"] = "test"
+        body["target_email"] = config.ADMIN_EMAIL
+
     try:
         resp = _call_cloud_function(body)
         return jsonify(resp), 200
