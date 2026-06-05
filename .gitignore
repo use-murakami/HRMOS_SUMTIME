@@ -3,6 +3,7 @@
 .env.*
 *.key
 credentials.json
+tools/readme.txt
 
 # Python
 __pycache__/
