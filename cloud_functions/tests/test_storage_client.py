@@ -204,3 +204,32 @@ class TestFindLatestBlob:
         mock_bucket.blob.assert_called_once_with(
             "sumtime_data/2026-05-08/sumtime_2026-05-08.json"
         )
+
+    @patch("modules.storage_client.storage.Client")
+    def test_master_blob_preferred(self, mock_client_class):
+        """マスターファイルが存在する場合は日付別より優先して選択されること"""
+        mock_client = MagicMock()
+        mock_client_class.return_value = mock_client
+
+        def make_blob(name):
+            b = MagicMock()
+            b.name = name
+            return b
+
+        mock_bucket = MagicMock()
+        # 日付別ファイルとマスターファイルが混在
+        mock_bucket.list_blobs.return_value = [
+            make_blob("sumtime_data/2026-05-08/sumtime_2026-05-08.json"),
+            make_blob("sumtime_data/master.json"),
+            make_blob("sumtime_data/2026-06-01/sumtime_2026-06-01.json"),
+        ]
+        mock_client.bucket.return_value = mock_bucket
+
+        mock_blob = MagicMock()
+        mock_blob.download_as_text.return_value = json.dumps(SAMPLE_PAYLOAD)
+        mock_bucket.blob.return_value = mock_blob
+
+        load_sumtime_data("my-bucket")
+
+        # 日付別の最新(2026-06-01)ではなくマスターが選択されること
+        mock_bucket.blob.assert_called_once_with("sumtime_data/master.json")

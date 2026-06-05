@@ -40,6 +40,10 @@ class SumtimeDataNotFoundError(Exception):
     pass
 
 
+# 全履歴を蓄積するマスターファイル（存在すれば最優先で読み込む）
+MASTER_BLOB_NAME = "sumtime_data/master.json"
+
+
 # ─────────────────────────────────────────────
 # パブリック関数
 # ─────────────────────────────────────────────
@@ -135,8 +139,12 @@ def build_today_blob_name(target_date: Optional[date] = None) -> str:
 
 def _find_latest_blob_name(bucket) -> str:
     """
-    バケット内の sumtime_data/ プレフィックスを持つブロブのうち
-    最新（名前の辞書順で最後）のものを返す。
+    読み込むSUMTIMEデータのブロブ名を決定する。
+
+    優先順位:
+      1. マスターファイル（sumtime_data/master.json）が存在すればそれを使う
+         （全履歴を蓄積しているため、過去月を含む任意期間を参照可能）
+      2. なければ従来通り、日付別ファイルのうち最新（辞書順で最後）を使う
 
     Raises:
         SumtimeDataNotFoundError: 該当するブロブが存在しない場合
@@ -149,7 +157,13 @@ def _find_latest_blob_name(bucket) -> str:
             "SUMTIMEデータが見つかりません: sumtime_data/ 配下にJSONファイルがありません"
         )
 
-    # ブロブ名はパスに日付が含まれるため辞書順 = 日付順
+    # ① マスターファイルがあれば最優先
+    for b in blobs:
+        if b.name == MASTER_BLOB_NAME:
+            logger.info(f"Using master SUMTIME blob: {MASTER_BLOB_NAME}")
+            return MASTER_BLOB_NAME
+
+    # ② なければ日付別ファイルの最新（パスに日付が含まれるため辞書順=日付順）
     latest = sorted(blobs, key=lambda b: b.name)[-1]
     logger.info(f"Auto-detected latest SUMTIME blob: {latest.name}")
     return latest.name
