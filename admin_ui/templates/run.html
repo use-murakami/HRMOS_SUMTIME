@@ -192,6 +192,8 @@ function showPreviewResult(data) {
         <td style="padding:6px 10px;font-size:12px;text-align:right;${d.diff_minutes > 0 ? 'color:#e65100' : 'color:#1565c0'};">${d.diff_minutes > 0 ? '+' : ''}${formatMin(d.diff_minutes)}</td>
         <td style="padding:6px 10px;">${d.is_anomaly ? '<span class="badge badge-warn">⚠ 異常値</span>' : ''}</td>
       </tr>`).join('');
+    // 差異の合計（絶対値）= 各日の |diff_minutes| の総和
+    const totalAbsDiff = days.reduce((sum, d) => sum + Math.abs(d.diff_minutes || 0), 0);
     return `
       <div style="margin-bottom:16px;border:1px solid #e8eaed;border-radius:8px;overflow:hidden;">
         <div style="background:#f8f9fa;padding:10px 14px;font-weight:700;font-size:13px;display:flex;justify-content:space-between;">
@@ -207,6 +209,11 @@ function showPreviewResult(data) {
             <th style="padding:6px 10px;font-size:11px;"></th>
           </tr></thead>
           <tbody>${dayRows}</tbody>
+          <tfoot><tr style="background:#fdf3e7;border-top:2px solid #e8eaed;font-weight:700;">
+            <td style="padding:8px 10px;font-size:12px;" colspan="3">差異合計（絶対値）</td>
+            <td style="padding:8px 10px;font-size:12px;text-align:right;color:#e65100;">${formatMin(totalAbsDiff)}</td>
+            <td></td>
+          </tr></tfoot>
         </table>
       </div>`;
   }).join('');
