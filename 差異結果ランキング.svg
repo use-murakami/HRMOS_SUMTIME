@@ -1,0 +1,52 @@
+<svg viewBox="0 0 720 372" xmlns="http://www.w3.org/2000/svg" role="img" font-family="'Segoe UI','Hiragino Sans','Meiryo',sans-serif">
+<title>直近3カ月の差異（±絶対値）が大きかった社員 上位3名</title>
+<desc>2026年3月・4月・5月それぞれで、勤怠と工数の差異（±絶対値）が大きかった社員の上位3名を横棒で示したランキング。時間は15分単位で切り捨てて比較。最長は2026年5月の42時間17分。</desc>
+<style>
+  .sh{font-size:15px;font-weight:700;fill:#111827}
+  .note{font-size:12px;fill:#475467}
+  .mlabel{font-size:15px;font-weight:700;fill:#1d4ed8}
+  .rank{font-size:14px;font-weight:700;fill:#1a1a2e}
+  .val{font-size:13px;font-weight:600;fill:#1a1a2e}
+  .sep{stroke:#e2e8f0;stroke-width:1}
+</style>
+
+<text x="28" y="28" class="sh">直近3カ月 差異（±絶対値）が大きかった社員 上位3名</text>
+<text x="28" y="46" class="note">勤怠（HRMOS）と工数（SUMTIME）の差異を確認した結果（15分単位切り捨て値を集計）</text>
+
+<text x="30" y="106" class="mlabel">2026/03</text>
+<text x="120" y="79" class="rank" text-anchor="middle">①</text>
+<rect x="138" y="64" width="110" height="20" rx="6" fill="#1d4ed8"/>
+<text x="256" y="79" class="val">12時間57分</text>
+<text x="120" y="111" class="rank" text-anchor="middle">②</text>
+<rect x="138" y="96" width="50" height="20" rx="6" fill="#60a5fa"/>
+<text x="196" y="111" class="val">5時間51分</text>
+<text x="120" y="143" class="rank" text-anchor="middle">③</text>
+<rect x="138" y="128" width="46" height="20" rx="6" fill="#93c5fd"/>
+<text x="192" y="143" class="val">5時間27分</text>
+
+<line x1="28" y1="160" x2="692" y2="160" class="sep"/>
+
+<text x="30" y="212" class="mlabel">2026/04</text>
+<text x="120" y="185" class="rank" text-anchor="middle">①</text>
+<rect x="138" y="170" width="165" height="20" rx="6" fill="#1d4ed8"/>
+<text x="311" y="185" class="val">19時間21分</text>
+<text x="120" y="217" class="rank" text-anchor="middle">②</text>
+<rect x="138" y="202" width="69" height="20" rx="6" fill="#60a5fa"/>
+<text x="215" y="217" class="val">8時間8分</text>
+<text x="120" y="249" class="rank" text-anchor="middle">③</text>
+<rect x="138" y="234" width="52" height="20" rx="6" fill="#93c5fd"/>
+<text x="198" y="249" class="val">6時間7分</text>
+
+<line x1="28" y1="266" x2="692" y2="266" class="sep"/>
+
+<text x="30" y="318" class="mlabel">2026/05</text>
+<text x="120" y="291" class="rank" text-anchor="middle">①</text>
+<rect x="138" y="276" width="360" height="20" rx="6" fill="#1d4ed8"/>
+<text x="506" y="291" class="val">42時間17分</text>
+<text x="120" y="323" class="rank" text-anchor="middle">②</text>
+<rect x="138" y="308" width="59" height="20" rx="6" fill="#60a5fa"/>
+<text x="205" y="323" class="val">6時間53分</text>
+<text x="120" y="355" class="rank" text-anchor="middle">③</text>
+<rect x="138" y="340" width="45" height="20" rx="6" fill="#93c5fd"/>
+<text x="191" y="355" class="val">5時間15分</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg viewBox="0 0 760 384" xmlns="http://www.w3.org/2000/svg" role="img" font-family="'Segoe UI','Hiragino Sans','Meiryo',sans-serif">
+<title>突き合わせ通知の概念と、仕様策定フェーズでチェック機構を実装した循環</title>
+<desc>上段：HRMOS勤怠とSUMTIME工数を突き合わせ、差異がある社員に通知する流れ。下段：そもそも通知が必要かを確認するには突き合わせチェック機構が必要で、仕様を固める段階で実装が先行したという循環。</desc>
+<style>
+  .sh{font-size:14px;font-weight:700;fill:#1d4ed8}
+  .th{font-size:14px;font-weight:600;fill:#1a1a2e}
+  .ts{font-size:12px;fill:#3f4a5c}
+  .lbl{font-size:12px;fill:#475467}
+  .arr{fill:none;stroke:#94a3b8;stroke-width:1.8;stroke-linecap:round}
+  .arrb{fill:none;stroke:#1d4ed8;stroke-width:2;stroke-linecap:round;stroke-dasharray:6 4}
+  .ico{fill:none;stroke:#475467;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .src{fill:#eef2f7;stroke:#94a3b8;stroke-width:1.2}
+  .main{fill:#dbeafe;stroke:#1d4ed8;stroke-width:1.6}
+  .diff{fill:#fff4e6;stroke:#f59e0b;stroke-width:1.3}
+  .node{fill:#ffffff;stroke:#1d4ed8;stroke-width:1.4}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<text x="30" y="24" class="sh">やりたいこと：勤怠と工数を突き合わせ、ズレがある人に通知</text>
+
+<rect x="34" y="40" width="166" height="46" rx="8" class="src"/>
+<g class="ico" transform="translate(46,52) scale(0.9)"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></g>
+<text x="78" y="68" class="th">HRMOS 勤怠</text>
+
+<rect x="34" y="102" width="166" height="46" rx="8" class="src"/>
+<g class="ico" transform="translate(46,114) scale(0.9)"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></g>
+<text x="78" y="130" class="th">SUMTIME 工数</text>
+
+<rect x="262" y="56" width="160" height="76" rx="10" class="main"/>
+<text x="342" y="90" class="th" fill="#15407a" text-anchor="middle">突き合わせ</text>
+<text x="342" y="110" class="ts" fill="#1d4ed8" text-anchor="middle">チェック機構</text>
+
+<rect x="470" y="72" width="92" height="44" rx="8" class="diff"/>
+<text x="516" y="99" class="th" fill="#92400e" text-anchor="middle">差異</text>
+
+<rect x="612" y="56" width="120" height="76" rx="10" class="src"/>
+<g class="ico" transform="translate(661,64) scale(0.95)"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></g>
+<text x="672" y="106" class="th" text-anchor="middle">本人へ</text>
+<text x="672" y="124" class="ts" text-anchor="middle">メール通知</text>
+
+<path class="arr" d="M200 63 H262" marker-end="url(#a)"/>
+<path class="arr" d="M200 125 H262" marker-end="url(#a)"/>
+<path class="arr" d="M422 94 H470" marker-end="url(#a)"/>
+<path class="arr" d="M562 94 H612" marker-end="url(#a)"/>
+
+<text x="30" y="186" class="sh">つくった順番：仕様を固める段階で、チェック機構を先に実装</text>
+
+<rect x="44" y="228" width="200" height="60" rx="10" class="node"/>
+<text x="144" y="252" class="th" text-anchor="middle">現状の乖離を確認したい</text>
+<text x="144" y="272" class="ts" text-anchor="middle">そもそも通知が必要か？</text>
+
+<rect x="280" y="300" width="210" height="60" rx="10" class="node"/>
+<text x="385" y="324" class="th" text-anchor="middle">確認には突き合わせ</text>
+<text x="385" y="342" class="th" text-anchor="middle">チェックが必要</text>
+
+<rect x="520" y="228" width="196" height="60" rx="10" class="node"/>
+<text x="618" y="252" class="th" text-anchor="middle">チェック機構を実装</text>
+<text x="618" y="272" class="ts" text-anchor="middle">（＝ほぼ本実装）</text>
+
+<path class="arr" d="M144 288 V330 H280" marker-end="url(#a)"/>
+<text x="196" y="316" class="lbl" text-anchor="middle">乖離を知るには…</text>
+<path class="arr" d="M490 330 H618 V288" marker-end="url(#a)"/>
+<text x="612" y="318" class="lbl" text-anchor="end">作るしかない</text>
+<path class="arrb" d="M618 228 V214 H144 V228" marker-end="url(#a)"/>
+<text x="381" y="207" fill="#b91c1c" text-anchor="middle" style="font-size:13.5px;font-weight:700">実装の結果で乖離有無が判明 → 構築の必要性が判断可能</text>
+</svg>

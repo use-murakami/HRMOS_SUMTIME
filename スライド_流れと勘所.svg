@@ -1,0 +1,65 @@
+<svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" role="img" font-family="'Segoe UI','Hiragino Sans','Meiryo',sans-serif">
+<title>今回の仕様駆動開発 ― 流れと勘所</title>
+<desc>左：開発の流れ8ステップ（要件ヒアリング〜本番移行）。右：勘所として、仕様駆動を動かすのは検証であること、二本柱（実機で事実を確かめる／AIの仕様を問い直す）、本質は前提を想像から事実へ。</desc>
+<style>
+  .title{font-size:26px;font-weight:700;fill:#111827}
+  .colh{font-size:22px;font-weight:700;fill:#1d4ed8}
+  .nd{font-size:16px;fill:#1a1a2e}
+  .badge{fill:#1d4ed8}
+  .bnum{font-size:14px;font-weight:700;fill:#ffffff}
+  .lead{font-size:16px;fill:#334155}
+  .big{font-size:32px;font-weight:700;fill:#1d4ed8}
+  .pl{font-size:18px;font-weight:700;fill:#1d4ed8}
+  .pt{font-size:17px;font-weight:600;fill:#1a1a2e}
+  .node{fill:#ffffff;stroke:#1d4ed8;stroke-width:1.6}
+  .bar{fill:#dbeafe;stroke:#1d4ed8;stroke-width:1.4}
+  .bart{font-size:20px;font-weight:700;fill:#15407a}
+</style>
+
+<rect x="0" y="0" width="960" height="540" fill="#ffffff"/>
+
+<text x="40" y="50" class="title">今回の仕様駆動開発 ― 流れと勘所</text>
+<line x1="40" y1="68" x2="920" y2="68" stroke="#e2e8f0" stroke-width="1"/>
+<line x1="468" y1="92" x2="468" y2="500" stroke="#e2e8f0" stroke-width="1"/>
+
+<text x="44" y="112" class="colh">開発の流れ</text>
+<rect x="44" y="120" width="120" height="3" rx="1.5" fill="#1d4ed8"/>
+<line x1="76" y1="150" x2="76" y2="474" stroke="#cbd5e1" stroke-width="2"/>
+
+<circle cx="76" cy="150" r="13" class="badge"/><text x="76" y="155" class="bnum" text-anchor="middle">1</text>
+<text x="100" y="155" class="nd">要件ヒアリング</text>
+<circle cx="76" cy="196" r="13" class="badge"/><text x="76" y="201" class="bnum" text-anchor="middle">2</text>
+<text x="100" y="201" class="nd">実機検証で前提を確定</text>
+<circle cx="76" cy="242" r="13" class="badge"/><text x="76" y="247" class="bnum" text-anchor="middle">3</text>
+<text x="100" y="247" class="nd">仕様書に固定（v0.1→v0.6）</text>
+<circle cx="76" cy="288" r="13" class="badge"/><text x="76" y="293" class="bnum" text-anchor="middle">4</text>
+<text x="100" y="293" class="nd">実データ調査</text>
+<circle cx="76" cy="334" r="13" class="badge"/><text x="76" y="339" class="bnum" text-anchor="middle">5</text>
+<text x="100" y="339" class="nd">テスト付き実装</text>
+<circle cx="76" cy="380" r="13" class="badge"/><text x="76" y="385" class="bnum" text-anchor="middle">6</text>
+<text x="100" y="385" class="nd">段階デプロイ</text>
+<circle cx="76" cy="426" r="13" class="badge"/><text x="76" y="431" class="bnum" text-anchor="middle">7</text>
+<text x="100" y="431" class="nd">安全ガード下で実データ検証</text>
+<circle cx="76" cy="472" r="13" class="badge"/><text x="76" y="477" class="bnum" text-anchor="middle">8</text>
+<text x="100" y="477" class="nd">本番移行（予定）</text>
+
+<text x="496" y="113" class="colh" style="font-size:24px">勘所</text>
+<rect x="496" y="121" width="66" height="3" rx="1.5" fill="#1d4ed8"/>
+
+<text x="500" y="172" class="lead">仕様駆動の「駆動」を動かすのは ――</text>
+<text x="500" y="214" class="big">検証</text>
+
+<rect x="500" y="242" width="200" height="106" rx="10" class="node"/>
+<text x="514" y="268" class="pl">柱1 ｜ 実機検証</text>
+<text x="514" y="308" class="pt">外部の事実を</text>
+<text x="514" y="334" class="pt">実機で確かめる</text>
+
+<rect x="712" y="242" width="218" height="106" rx="10" class="node"/>
+<text x="726" y="268" class="pl">柱2 ｜ AIへの問い直し</text>
+<text x="726" y="308" class="pt">AIが出した仕様を</text>
+<text x="726" y="334" class="pt">問い直して確かめる</text>
+
+<rect x="500" y="372" width="412" height="64" rx="10" class="bar"/>
+<text x="706" y="402" class="bart" text-anchor="middle">前提を「想像」から「事実」へ</text>
+<text x="706" y="423" class="lead" text-anchor="middle">＝ 手戻り（前提の崩壊）を防ぐ</text>
+</svg>
