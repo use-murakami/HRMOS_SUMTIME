@@ -1,0 +1,34 @@
+<svg viewBox="0 0 960 470" xmlns="http://www.w3.org/2000/svg" role="img" font-family="'Segoe UI','Hiragino Sans','Meiryo',sans-serif">
+<title>突き合わせ作業の時間を83%削減</title>
+<desc>従来は1か月あたり60分（30分×2回）かかっていた突き合わせ作業が、導入後は10分（生成結果の確認5分×2回）になり、作業時間を83%削減した。</desc>
+<style>
+  .ttl{font-size:24px;font-weight:700;fill:#111827}
+  .tag{font-size:15px;font-weight:700}
+  .big{font-size:42px;font-weight:800}
+  .det{font-size:24px;font-weight:700;fill:#1f2937}
+  .hero{font-size:130px;font-weight:800;fill:#1d4ed8}
+  .heroL{font-size:26px;font-weight:700;fill:#1f2937}
+  .heroS{font-size:27px;font-weight:700;fill:#1f2937}
+</style>
+<rect x="0" y="0" width="960" height="470" fill="#ffffff"/>
+
+<text x="40" y="50" class="ttl">突き合わせ作業の時間を大幅に削減</text>
+
+<rect x="40" y="92" width="70" height="28" rx="14" fill="#e2e8f0"/>
+<text x="75" y="112" class="tag" fill="#475467" text-anchor="middle">従来</text>
+<text x="124" y="118" class="big" fill="#334155">60分 ／ 月</text>
+<text x="42" y="152" class="det">30分/回 × 2回/月</text>
+<rect x="42" y="168" width="430" height="30" rx="6" fill="#94a3b8"/>
+
+<rect x="40" y="270" width="86" height="28" rx="14" fill="#dcfce7"/>
+<text x="83" y="290" class="tag" fill="#15803d" text-anchor="middle">導入後</text>
+<text x="140" y="296" class="big" fill="#16a34a">10分 ／ 月</text>
+<text x="42" y="330" class="det">5分/回（生成結果の確認） × 2回/月</text>
+<rect x="42" y="346" width="72" height="30" rx="6" fill="#16a34a"/>
+
+<line x1="560" y1="70" x2="560" y2="400" stroke="#e2e8f0" stroke-width="1"/>
+
+<text x="752" y="248" class="hero" text-anchor="middle">83%</text>
+<text x="752" y="298" class="heroL" text-anchor="middle">作業時間を削減</text>
+<text x="752" y="332" class="heroS" text-anchor="middle">60分 → 10分 ／ 月</text>
+</svg>
